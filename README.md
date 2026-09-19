@@ -1,13 +1,18 @@
-# Biblioteca CSS + HTML
+# CSS Academy
 
-Biblioteca educativa interactiva con estética neón.
+Biblioteca visual e interactiva para aprender **CSS desde cero**, pensada para estudiantes principiantes.
 
-## Enfoque
+## Incluye
 
-1. Primero explica CSS: sintaxis, selectores, cascada, especificidad, box model, layout, responsive y efectos.
-2. Después muestra cómo se implementa cada concepto junto con HTML.
-3. Incluye código copiable, resultado visual, buscador, filtros, actividades y editor HTML + CSS en vivo.
+- Ruta de 20 lecciones en orden lógico.
+- Explicaciones fáciles y diccionario rápido.
+- Ejemplos con `styles.css` y vista previa inmediata.
+- Laboratorio donde el estudiante modifica solo CSS.
+- Mini proyecto al final de cada lección.
+- Proyecto final de dashboard construido principalmente con CSS.
+- Búsqueda, filtros, favoritos, progreso y modo oscuro guardados en el navegador.
+- Diseño responsive para escritorio y móvil.
 
-## Uso
+## GitHub Pages
 
-Abre `index.html` directamente en el navegador o usa Live Server.
+El sitio funciona como página estática: `index.html` es suficiente para publicarlo con GitHub Pages.
