@@ -1,44 +1,1895 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Biblioteca CSS + HTML</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CSS Academy: biblioteca visual e interactiva de CSS desde cero para principiantes.">
+<title>CSS Academy · CSS desde cero</title>
 <style>
-:root{--bg:#030b18;--panel:#08182a;--panel2:#0c2138;--line:#0ee7d8;--green:#27f29a;--blue:#42b8ff;--text:#eef8ff;--muted:#94b6d2;--code:#06111f;--shadow:0 20px 55px rgba(0,0,0,.35)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0,#06304a 0,transparent 28%),linear-gradient(135deg,#020713,#061425 55%,#020713);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}.top{position:sticky;top:0;z-index:20;background:rgba(3,11,24,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(14,231,216,.28);padding:18px 24px}.brand{display:flex;align-items:center;gap:14px}.logo{width:48px;height:48px;border:1px solid var(--line);border-radius:14px;display:grid;place-items:center;color:var(--green);font-weight:900;box-shadow:0 0 28px rgba(39,242,154,.15)}h1{margin:0;font-size:clamp(26px,3vw,44px)}.subtitle{color:var(--muted);margin-top:5px}.toolbar{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}.toolbar input,.toolbar select{background:#071629;border:1px solid #1c4664;color:white;border-radius:11px;padding:11px 13px;outline:none}.toolbar input{flex:1;min-width:250px}.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:18px;padding:18px;max-width:1700px;margin:auto}.side{position:sticky;top:145px;height:calc(100vh - 165px);overflow:auto;background:rgba(8,24,42,.82);border:1px solid #1a4662;border-radius:20px;padding:18px;box-shadow:var(--shadow)}.side h3{color:#84b6d9;font-size:12px;letter-spacing:.18em}.nav button{width:100%;text-align:left;background:transparent;color:#b9d7ea;border:0;border-radius:10px;padding:11px 12px;margin:2px 0;cursor:pointer}.nav button:hover,.nav button.active{background:linear-gradient(90deg,rgba(39,242,154,.16),rgba(66,184,255,.08));color:#4fffb0;box-shadow:inset 3px 0 var(--green)}.main{min-width:0}.hero{background:linear-gradient(135deg,rgba(9,28,48,.95),rgba(6,18,33,.95));border:1px solid rgba(14,231,216,.35);border-radius:22px;padding:24px;box-shadow:var(--shadow);margin-bottom:18px}.hero .badge{display:inline-block;border:1px solid #176e74;color:#53ffe3;border-radius:999px;padding:5px 9px;font-size:12px}.hero h2{font-size:31px;margin:10px 0 8px}.hero p{color:#b7d2e5;max-width:900px;line-height:1.7}.progress{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.pill{border:1px solid #254a67;background:#0b2037;color:#a9cae0;border-radius:999px;padding:6px 10px;font-size:12px}.section-title{font-size:25px;margin:24px 0 10px}.cards{display:grid;gap:14px}.card{display:grid;grid-template-columns:minmax(240px,.85fr) minmax(300px,1.15fr) minmax(280px,1fr);background:linear-gradient(135deg,rgba(8,28,43,.95),rgba(8,18,34,.95));border:1px solid #14616b;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.explain,.code,.preview{padding:20px}.explain{border-left:6px solid var(--green)}.tag{font-size:24px;font-weight:800;color:var(--green)}.explain h3{margin:6px 0 10px}.explain p{color:#b5d2e6;line-height:1.65}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{font-size:11px;padding:5px 8px;border:1px solid #215a7a;border-radius:999px;color:#73d8ff}.code{background:#061425;border-left:1px solid #17354e;border-right:1px solid #17354e}.code-head,.preview-head{display:flex;justify-content:space-between;align-items:center;color:#9fd1f1;font-size:12px;margin-bottom:12px}.copy{border:1px solid #1a7a79;background:#082c34;color:#6dffdf;border-radius:8px;padding:6px 9px;cursor:pointer}pre{white-space:pre-wrap;word-break:break-word;margin:0;color:#eaf5ff;font:13px/1.55 Consolas,monospace}.preview{background:#0a1d31}.frame{background:white;color:#111;border-radius:10px;min-height:150px;padding:16px;overflow:auto}.note{margin-top:12px;border:1px solid #175978;border-radius:10px;padding:10px 12px;color:#9fd4f1;background:rgba(5,39,62,.45);font-size:13px}.activity{margin:18px 0;background:linear-gradient(135deg,rgba(66,184,255,.12),rgba(39,242,154,.08));border:1px solid #27597a;border-radius:16px;padding:18px}.editor{display:grid;grid-template-columns:1fr 1fr;gap:12px}.editor textarea{width:100%;min-height:210px;background:#04101d;color:#dcf5ff;border:1px solid #24506c;border-radius:12px;padding:14px;font:13px/1.5 Consolas,monospace}.editor iframe{width:100%;min-height:440px;background:white;border:1px solid #24506c;border-radius:12px}.hidden{display:none!important}@media(max-width:1150px){.card{grid-template-columns:1fr 1fr}.preview{grid-column:1/-1}}@media(max-width:820px){.layout{grid-template-columns:1fr}.side{position:relative;top:0;height:auto}.card,.editor{grid-template-columns:1fr}.preview{grid-column:auto}.top{position:relative}.toolbar input{min-width:100%}}
+:root{
+  --bg:#f4f7fb;--surface:#fff;--surface-2:#f8fafc;--surface-3:#eef4fa;--ink:#0f172a;--muted:#64748b;
+  --line:#dbe4ef;--brand:#1572b6;--brand-2:#0ea5e9;--purple:#7c3aed;--green:#059669;--amber:#d97706;
+  --red:#e11d48;--shadow:0 18px 50px rgba(15,23,42,.08);--shadow-soft:0 10px 28px rgba(15,23,42,.055);
+  --radius:24px;--mono:"Cascadia Code","SFMono-Regular",Consolas,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:104px}body{margin:0;background:radial-gradient(circle at 0 0,rgba(21,114,182,.10),transparent 28rem),radial-gradient(circle at 100% 8%,rgba(124,58,237,.08),transparent 30rem),linear-gradient(180deg,#f8fafc,#eef3f8 46%,#f8fafc);color:var(--ink);font-family:var(--sans);line-height:1.68;min-height:100vh}
+a{color:var(--brand);text-decoration:none}button,input,textarea{font:inherit}.progress-top{position:fixed;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),var(--purple),var(--brand-2));z-index:10000}
+.header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(22px) saturate(150%);border-bottom:1px solid rgba(203,213,225,.78);box-shadow:0 10px 30px rgba(15,23,42,.045)}
+.header-inner{max-width:1240px;margin:auto;padding:12px 22px 9px}.brand-row{display:flex;align-items:center;gap:12px}.brand-mark{width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#33a9e8,#1572b6 48%,#0b5f9c);color:#fff;font-weight:950;box-shadow:0 12px 26px rgba(21,114,182,.23),inset 0 1px 0 rgba(255,255,255,.35)}.brand-copy{min-width:0;flex:1}.brand-copy h2{font-size:18px;line-height:1.1;margin:0;letter-spacing:-.03em}.brand-copy p{margin:3px 0 0;color:#94a3b8;font-size:11px}.header-actions{display:flex;gap:8px}.icon-btn{width:40px;height:40px;border:1px solid #dbe4ef;border-radius:12px;background:#fff;color:#334155;cursor:pointer;box-shadow:0 6px 16px rgba(15,23,42,.05)}
+.nav-row{display:flex;gap:6px;align-items:center;margin-top:10px;overflow:auto;scrollbar-width:none}.nav-row::-webkit-scrollbar{display:none}.nav-link{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;padding:7px 10px;border:1px solid transparent;border-radius:999px;color:#64748b;font-size:11px;font-weight:700;white-space:nowrap}.nav-link:hover,.nav-link.active{color:#075985;background:#e0f2fe;border-color:#bae6fd}.nav-num{color:#0284c7;font-weight:900}.search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:10px}.search-wrap{position:relative}.search-wrap input{width:100%;height:42px;padding:0 14px 0 40px;border:1px solid #dbe4ef;border-radius:12px;background:#f8fafc;outline:none;color:#0f172a}.search-wrap input:focus{background:#fff;border-color:#7dd3fc;box-shadow:0 0 0 4px rgba(14,165,233,.09)}.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#94a3b8}.filters{display:flex;gap:6px}.filter-btn{padding:8px 10px;border:1px solid #dbe4ef;border-radius:999px;background:#fff;color:#64748b;font-size:10px;font-weight:800;cursor:pointer}.filter-btn.active{background:#1572b6;border-color:#1572b6;color:#fff}
+.hero{position:relative;max-width:1160px;margin:0 auto;padding:88px 30px 66px;text-align:center;overflow:hidden}.hero::before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(21,114,182,.18),transparent 68%);top:-270px;left:50%;transform:translateX(-50%);pointer-events:none}.hero::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.10),transparent 70%);right:2%;bottom:-70px;pointer-events:none}.eyebrow{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid #bae6fd;border-radius:999px;background:#f0f9ff;color:#075985;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.hero h1{position:relative;z-index:1;max-width:980px;margin:22px auto 18px;font-size:clamp(46px,7vw,82px);line-height:.98;letter-spacing:-.055em;text-wrap:balance}.gradient-text{background:linear-gradient(92deg,#0f172a 0%,#0f172a 22%,#1572b6 48%,#7c3aed 76%,#0ea5e9 100%);background-clip:text;-webkit-background-clip:text;color:transparent}.hero-lead{position:relative;z-index:1;max-width:850px;margin:0 auto;color:#64748b;font-size:19px;line-height:1.85}.hero-grid{position:relative;z-index:1;max-width:920px;margin:34px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:17px;border:1px solid #e2e8f0;border-radius:19px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 10px 26px rgba(15,23,42,.05)}.stat strong{display:block;font-size:21px}.stat span{color:#94a3b8;font-size:10px}.route{position:relative;z-index:1;max-width:960px;margin:28px auto 0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.route-step{padding:11px;border:1px solid #dbe4ef;border-radius:14px;background:rgba(255,255,255,.8);font-size:10px;color:#64748b}.route-step strong{display:block;color:#0f172a;font-size:11px;margin-bottom:3px}
+.content{max-width:1140px;margin:auto;padding:0 16px 80px}.course-section{content-visibility:auto;contain-intrinsic-size:1200px;position:relative;margin-bottom:34px;padding:46px 40px;border:1px solid #dbe4ef;border-radius:30px;background:linear-gradient(180deg,#fff 0%,#fff 75%,#fbfdff 100%);box-shadow:var(--shadow-soft);overflow:hidden;scroll-margin-top:110px}.course-section::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--section-accent,var(--brand)),var(--purple),var(--brand-2))}.section-kicker{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid #bae6fd;border-radius:999px;background:#f0f9ff;color:#075985;font-size:10px;font-weight:900;letter-spacing:.12em}.course-section h2{margin:14px 0 10px;font-size:clamp(30px,4vw,44px);line-height:1.08;letter-spacing:-.035em;text-wrap:balance}.lead{margin:0;color:#64748b;font-size:17px;line-height:1.8;max-width:920px}.study-strip{display:flex;align-items:center;gap:8px;margin:20px 0 22px;padding:10px 12px;border:1px solid #e2e8f0;border-radius:14px;background:#f8fafc}.group-badge{padding:5px 8px;border-radius:999px;background:#e0f2fe;color:#075985;font-size:9px;font-weight:900}.study-spacer{flex:1}.study-btn,.fav-btn{border:1px solid #dbe4ef;background:#fff;color:#64748b;border-radius:9px;padding:7px 9px;font-size:10px;font-weight:800;cursor:pointer}.study-btn.done{background:#ecfdf5;border-color:#a7f3d0;color:#166534}.fav-btn.active{background:#fff7ed;border-color:#fed7aa;color:#c2410c}
+.easy-panel{margin:0 0 24px;overflow:hidden;border:1px solid #dbe4ef;border-radius:22px;background:radial-gradient(circle at 100% 0%,rgba(250,204,21,.10),transparent 35%),linear-gradient(180deg,#fff,#fffef8);box-shadow:0 10px 28px rgba(15,23,42,.045)}.easy-head{display:flex;align-items:center;gap:12px;padding:14px 17px;border-bottom:1px solid #e2e8f0}.easy-head span{padding:5px 8px;border-radius:999px;background:#fef9c3;color:#854d0e;font-size:8px;font-weight:900;letter-spacing:.1em}.easy-head strong{font-size:14px}.easy-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:15px}.easy-card{display:grid;grid-template-columns:40px 1fr;gap:11px;align-items:start;padding:14px;border:1px solid #e2e8f0;border-radius:14px;background:#fff}.easy-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:#f8fafc}.easy-card strong{display:block;margin-bottom:4px;font-size:12px}.easy-card p{margin:0;color:#475569;font-size:12px;line-height:1.65}.easy-card.simple{border-color:#bbf7d0}.easy-card.simple .easy-icon{background:#ecfdf5}.easy-card.daily{border-color:#bfdbfe}.easy-card.daily .easy-icon{background:#eff6ff}.easy-card.behind{border-color:#ddd6fe}.easy-card.behind .easy-icon{background:#f5f3ff}.easy-card.remember{border-color:#fde68a}.easy-card.remember .easy-icon{background:#fffbeb}
+.dictionary{margin:-8px 0 24px;padding:14px 15px;border:1px dashed #cbd5e1;border-radius:16px;background:#f8fafc}.dictionary-title{margin-bottom:9px;color:#475569;font-size:9px;font-weight:900;letter-spacing:.05em}.dictionary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.dictionary-grid div{padding:10px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}.dictionary-grid strong,.dictionary-grid span{display:block}.dictionary-grid strong{font-size:10px;color:#075985}.dictionary-grid span{margin-top:3px;color:#64748b;font-size:9px}
+.topic{margin:18px 0;border:1px solid #dbe4ef;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 8px 22px rgba(15,23,42,.04)}.topic summary{display:flex;align-items:center;gap:12px;padding:17px 18px;cursor:pointer;background:linear-gradient(180deg,#fbfdff,#f8fafc);list-style:none}.topic summary::-webkit-details-marker{display:none}.topic[open] summary{background:#f0f9ff;border-bottom:1px solid #bae6fd}.topic-num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#1572b6;color:#fff;font-size:10px;font-weight:900}.topic-title{flex:1}.topic-title strong{display:block;font-size:14px}.topic-title small{display:block;margin-top:2px;color:#64748b;font-size:10px}.topic-body{padding:18px}.topic-simple{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;margin-bottom:16px;padding:10px 12px;border:1px solid #dbeafe;border-radius:11px;background:#eff6ff}.topic-simple span{padding:4px 7px;border-radius:999px;background:#1572b6;color:#fff;font-size:7px;font-weight:900;letter-spacing:.09em}.topic-simple p{margin:0;color:#1e3a8a;font-size:11px}.workbench{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:stretch}.codebox{overflow:hidden;border:1px solid #1e293b;border-radius:16px;background:#0b1220;box-shadow:0 12px 28px rgba(15,23,42,.13)}.codehead{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:9px 12px;background:#111827;border-bottom:1px solid #26344f;color:#94a3b8;font-size:10px}.codehead strong{color:#e2e8f0}.copy{border:1px solid #334155;background:#172033;color:#e2e8f0;border-radius:8px;padding:6px 9px;font-size:9px;font-weight:800;cursor:pointer}.codebox pre{margin:0;padding:16px;color:#e2e8f0;font:12px/1.72 var(--mono);white-space:pre;overflow:auto;tab-size:2}.preview-card{overflow:hidden;border:1px solid #cbd5e1;border-radius:16px;background:#fff;box-shadow:0 12px 28px rgba(15,23,42,.07)}.browser-bar{height:42px;display:flex;align-items:center;gap:6px;padding:0 12px;background:linear-gradient(180deg,#eef2f7,#e2e8f0);border-bottom:1px solid #cbd5e1}.dot{width:9px;height:9px;border-radius:50%}.dot.red{background:#fb7185}.dot.yellow{background:#fbbf24}.dot.green{background:#34d399}.url{margin-left:6px;flex:1;padding:4px 8px;border:1px solid #cbd5e1;border-radius:7px;background:#fff;color:#94a3b8;font-size:9px}.preview-frame{display:block;width:100%;height:280px;border:0;background:#fff}.observe{display:grid;gap:8px;margin-top:14px}.observe div{padding:11px 13px;border-radius:12px;font-size:11px;line-height:1.6}.observe .look{background:#f0f9ff;border:1px solid #bae6fd;color:#075985}.observe .tip{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}.observe .mistake{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}.lab-btn{margin-top:13px;width:100%;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;border-radius:11px;padding:10px 12px;font-size:10px;font-weight:900;cursor:pointer}.lab-btn:hover{background:#dbeafe}
+.practice-divider{display:flex;align-items:center;gap:12px;margin:30px 0 16px;color:#64748b;font-size:9px;font-weight:900;letter-spacing:.1em}.practice-divider span{height:1px;flex:1;background:#e2e8f0}.mini-project{overflow:hidden;border:1px solid #cbd5e1;border-radius:24px;background:radial-gradient(circle at 100% 0%,rgba(21,114,182,.10),transparent 38%),linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 16px 42px rgba(15,23,42,.065)}.mini-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 24px 18px;border-bottom:1px solid #dbe4ef}.mini-kicker{display:inline-block;margin-bottom:6px;color:#075985;font-size:9px;font-weight:900;letter-spacing:.12em}.mini-head h3{margin:0 0 6px;font-size:23px;letter-spacing:-.025em}.mini-head p{margin:0;color:#64748b;font-size:12px}.mini-complete{flex:0 0 auto;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#64748b;padding:8px 10px;font-size:10px;font-weight:900;cursor:pointer}.mini-complete.is-complete{background:#ecfdf5;border-color:#86efac;color:#166534}.mini-meta{display:grid;grid-template-columns:.65fr .65fr 1.7fr;gap:10px;padding:14px 24px 0}.mini-meta div{display:grid;gap:4px;padding:11px 12px;border:1px solid #e2e8f0;border-radius:13px;background:#f8fafc}.mini-meta span,.mini-files span,.mini-why span{color:#64748b;font-size:8px;font-weight:900;letter-spacing:.09em}.mini-meta strong{font-size:12px}.mini-meta code{color:#075985;font:11px var(--mono);overflow-wrap:anywhere}.mini-why{margin:14px 24px 0;padding:14px 15px;border:1px solid #bfdbfe;border-radius:14px;background:#eff6ff}.mini-why p{margin:5px 0 0;color:#334155;font-size:12px}.mini-files{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;margin:12px 24px 0;padding:12px 13px;border:1px solid #d1fae5;border-radius:13px;background:#f0fdf4}.mini-files code{color:#166534;font:11px var(--mono)}.mini-steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 24px;padding:0;list-style:none}.mini-steps li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:14px;border:1px solid #dbe4ef;border-radius:14px;background:#fff;color:#334155;font-size:12px}.step-num{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#1572b6;color:#fff;font-size:10px;font-weight:900}.mini-end{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 24px 22px}.mini-end article{padding:14px;border-radius:14px}.mini-end .deliver{background:#f0fdf4;border:1px solid #86efac}.mini-end .bonus{background:#fffbeb;border:1px solid #fde68a}.mini-end span{font-size:8px;font-weight:900;color:#64748b;letter-spacing:.08em}.mini-end p{margin:5px 0 0;color:#475569;font-size:12px}
+.final-section{--section-accent:#7c3aed}.final-roadmap{margin:22px 0 24px;padding:18px;border:1px solid #ddd6fe;border-radius:20px;background:linear-gradient(180deg,#f5f3ff,#fff)}.final-roadmap strong{display:block;margin-bottom:12px;font-size:17px}.final-flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.final-flow span{padding:8px 10px;border:1px solid #ddd6fe;border-radius:10px;background:#fff;color:#5b21b6;font-size:10px;font-weight:800}.final-flow b{color:#94a3b8}.final-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.final-card{padding:16px;border:1px solid #dbe4ef;border-radius:16px;background:#fff}.final-card h4{margin:0 0 7px}.final-card p{margin:0;color:#64748b;font-size:12px}.final-step{margin:14px 0;border:1px solid #dbe4ef;border-radius:16px;overflow:hidden}.final-step summary{padding:14px 16px;background:#f8fafc;font-weight:800;cursor:pointer}.final-step[open] summary{background:#f5f3ff;color:#5b21b6}.final-step-body{padding:14px 16px}.checklist{display:grid;gap:8px}.checklist label{display:flex;gap:9px;align-items:flex-start;padding:10px 11px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;color:#475569;font-size:11px}.checklist input{margin-top:3px;accent-color:#7c3aed}.footer{max-width:1140px;margin:0 auto;padding:0 24px 80px;text-align:center;color:#94a3b8;font-size:11px}.empty{display:none;padding:30px;text-align:center;border:1px dashed #cbd5e1;border-radius:18px;background:#f8fafc;color:#64748b}
+.lab-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(15,23,42,.62);backdrop-filter:blur(8px)}.lab-modal.open{display:flex}.lab-dialog{width:min(1120px,97vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:#0b1220;box-shadow:0 30px 90px rgba(0,0,0,.36)}.lab-top{display:flex;align-items:center;gap:10px;padding:11px 13px;background:#111827;border-bottom:1px solid #26344f}.lab-title{flex:1;color:#fff;font-size:12px;font-weight:800}.lab-close{width:34px;height:34px;border:1px solid #334155;border-radius:9px;background:#172033;color:#fff;cursor:pointer}.lab-body{display:grid;grid-template-columns:1.1fr .9fr;min-height:0;flex:1}.lab-code{display:flex;flex-direction:column;min-width:0;background:#0b1220}.lab-label{padding:9px 12px;border-bottom:1px solid #26344f;color:#7dd3fc;font-size:9px;font-weight:900;letter-spacing:.08em}.lab-code textarea{flex:1;min-height:430px;resize:none;border:0;outline:none;background:#0b1220;color:#e2e8f0;padding:14px;font:12px/1.7 var(--mono)}.lab-preview{display:flex;flex-direction:column;border-left:1px solid #26344f;background:#f8fafc}.lab-preview-head{padding:9px 12px;border-bottom:1px solid #e2e8f0;background:#fff;color:#475569;font-size:9px;font-weight:900;letter-spacing:.08em}.lab-preview iframe{flex:1;min-height:430px;border:0;background:#fff}.lab-actions{display:flex;gap:7px;padding:10px 12px;background:#111827;border-top:1px solid #26344f}.lab-action{border:1px solid #334155;background:#172033;color:#e2e8f0;border-radius:9px;padding:7px 10px;font-size:9px;font-weight:800;cursor:pointer}.lab-action.primary{background:#1572b6;border-color:#1572b6;color:#fff}.lab-status{margin-left:auto;color:#94a3b8;font-size:9px;align-self:center}
+body.theme-dark{--bg:#070b14;--surface:#0b1220;--surface-2:#0f172a;--ink:#e2e8f0;--muted:#94a3b8;--line:#26344f;background:radial-gradient(circle at 0 0,rgba(21,114,182,.15),transparent 26rem),radial-gradient(circle at 100% 10%,rgba(124,58,237,.14),transparent 28rem),linear-gradient(180deg,#070b14,#0b1220 58%,#08101b);color:#e2e8f0}.theme-dark .header{background:rgba(8,13,24,.92);border-color:#1e293b}.theme-dark .brand-copy h2,.theme-dark .course-section h2,.theme-dark .easy-head strong,.theme-dark .easy-card strong,.theme-dark .topic-title strong,.theme-dark .mini-head h3,.theme-dark .mini-meta strong,.theme-dark .final-roadmap strong,.theme-dark .final-card h4{color:#f8fafc}.theme-dark .brand-copy p,.theme-dark .hero-lead,.theme-dark .lead{color:#94a3b8}.theme-dark .icon-btn,.theme-dark .filter-btn,.theme-dark .study-btn,.theme-dark .fav-btn{background:#0f172a;border-color:#26344f;color:#cbd5e1}.theme-dark .search-wrap input{background:#0f172a;border-color:#26344f;color:#e2e8f0}.theme-dark .route-step,.theme-dark .stat,.theme-dark .course-section,.theme-dark .easy-panel,.theme-dark .easy-card,.theme-dark .dictionary,.theme-dark .dictionary-grid div,.theme-dark .topic,.theme-dark .mini-project,.theme-dark .mini-meta div,.theme-dark .mini-steps li,.theme-dark .final-card,.theme-dark .checklist label{background:#0b1220;border-color:#26344f}.theme-dark .study-strip,.theme-dark .topic summary,.theme-dark .mini-files{background:#0f172a;border-color:#26344f}.theme-dark .easy-card p,.theme-dark .mini-head p,.theme-dark .mini-end p,.theme-dark .final-card p{color:#a9b6c9}.theme-dark .topic-simple{background:#10213f;border-color:#1e3a5f}.theme-dark .topic-simple p{color:#bfdbfe}.theme-dark .mini-why{background:#10213f;border-color:#1e3a5f}.theme-dark .mini-why p{color:#bfdbfe}.theme-dark .final-roadmap{background:#17112b;border-color:#4c1d95}.theme-dark .final-flow span{background:#1e1536;border-color:#5b21b6;color:#ddd6fe}.theme-dark .final-step{border-color:#26344f}.theme-dark .final-step summary{background:#0f172a}.theme-dark .final-step[open] summary{background:#1e1536;color:#ddd6fe}
+@media(max-width:950px){.hero-grid{grid-template-columns:1fr 1fr}.route{grid-template-columns:1fr 1fr}.workbench,.final-grid{grid-template-columns:1fr}.preview-frame{height:260px}.mini-meta{grid-template-columns:1fr}.filters{display:none}}@media(max-width:700px){.header-inner{padding-left:12px;padding-right:12px}.brand-copy p{display:none}.hero{padding:62px 18px 44px}.hero h1{font-size:clamp(40px,12vw,58px)}.hero-lead{font-size:16px}.hero-grid{grid-template-columns:1fr 1fr}.route{grid-template-columns:1fr}.content{padding-left:10px;padding-right:10px}.course-section{padding:30px 18px;border-radius:20px}.easy-grid,.dictionary-grid,.mini-steps,.mini-end{grid-template-columns:1fr}.topic-body{padding:13px}.mini-head{flex-direction:column}.mini-meta,.mini-why,.mini-files,.mini-steps,.mini-end{margin-left:16px;margin-right:16px}.mini-meta{padding-left:0;padding-right:0}.lab-body{grid-template-columns:1fr}.lab-preview{border-left:0;border-top:1px solid #26344f}.lab-code textarea,.lab-preview iframe{min-height:300px}.search-row{grid-template-columns:1fr}.study-strip{flex-wrap:wrap}.study-spacer{display:none}}
+@media(max-width:480px){.hero-grid{grid-template-columns:1fr}.header-actions{gap:4px}.icon-btn{width:36px;height:36px}.brand-mark{width:39px;height:39px}.course-section h2{font-size:30px}.topic summary{align-items:flex-start}.study-btn{flex:1}}
 </style>
 </head>
 <body>
-<header class="top"><div class="brand"><div class="logo">CSS</div><div><h1>Biblioteca CSS + HTML</h1><div class="subtitle">Primero entiendes CSS. Después ves cómo se implementa con HTML.</div></div></div><div class="toolbar"><input id="search" placeholder="Buscar concepto, propiedad, selector o ejemplo..."><select id="filter"><option value="all">Todos</option><option value="fundamentos">Fundamentos</option><option value="layout">Layout</option><option value="responsive">Responsive</option><option value="efectos">Efectos</option></select></div></header>
-<div class="layout">
-<aside class="side"><h3>CONTENIDO</h3><div id="nav" class="nav"></div></aside>
-<main class="main">
-<section class="hero"><span class="badge">CSS / HTML</span><h2>De la teoría visual a la implementación</h2><p>Esta biblioteca explica primero qué hace CSS, cómo funciona su sintaxis y cómo decide el navegador qué reglas aplicar. Luego cada tema incluye una implementación práctica con HTML, código copiable y resultado visual.</p><div class="progress"><span class="pill">Selectores</span><span class="pill">Cascada</span><span class="pill">Box Model</span><span class="pill">Flexbox</span><span class="pill">Grid</span><span class="pill">Responsive</span><span class="pill">Animaciones</span></div></section>
-<div id="content"></div>
-<section class="hero" id="editor"><span class="badge">LABORATORIO</span><h2>Editor en vivo HTML + CSS</h2><p>Modifica el HTML y el CSS para ver inmediatamente el resultado.</p><div class="editor"><div><textarea id="htmlEditor"><div class="demo-card">\n  <h2>Hola CSS</h2>\n  <p>Estoy aprendiendo a dar estilo al HTML.</p>\n  <button>Explorar</button>\n</div></textarea><textarea id="cssEditor">body{font-family:Arial;padding:30px;background:#edf6ff}\n.demo-card{max-width:380px;padding:24px;border-radius:18px;background:white;box-shadow:0 18px 45px #b7c9d8}\n.demo-card h2{color:#0a7e72}\nbutton{padding:10px 16px;border:0;border-radius:10px;background:#0a7e72;color:white}</textarea></div><iframe id="live"></iframe></div></section>
-</main></div>
+<div class="progress-top"></div>
+<header class="header"><div class="header-inner">
+  <div class="brand-row"><div class="brand-mark">CSS</div><div class="brand-copy"><h2>CSS Academy</h2><p>Biblioteca visual · solo CSS como tema de aprendizaje</p></div><div class="header-actions"><button class="icon-btn" id="theme" title="Cambiar tema">◐</button></div></div>
+  <nav class="nav-row" aria-label="Lecciones"><a class="nav-link" href="#inicio"><span class="nav-num">00</span>CSS desde cero</a><a class="nav-link" href="#conectar-css"><span class="nav-num">01</span>Preparar un archivo styles.c</a><a class="nav-link" href="#sintaxis-selectores"><span class="nav-num">02</span>Sintaxis, comentarios y sele</a><a class="nav-link" href="#cascada"><span class="nav-num">03</span>Cascada, especificidad e her</a><a class="nav-link" href="#unidades-colores"><span class="nav-num">04</span>Colores, unidades y tamaños</a><a class="nav-link" href="#box-model"><span class="nav-num">05</span>Box Model</a><a class="nav-link" href="#tipografia"><span class="nav-num">06</span>Tipografía y legibilidad</a><a class="nav-link" href="#fondos-bordes"><span class="nav-num">07</span>Fondos, bordes, radios y som</a><a class="nav-link" href="#display-overflow"><span class="nav-num">08</span>Display, overflow y visibili</a><a class="nav-link" href="#position"><span class="nav-num">09</span>Position, offsets y z-index</a><a class="nav-link" href="#flexbox"><span class="nav-num">10</span>Flexbox</a><a class="nav-link" href="#grid"><span class="nav-num">11</span>CSS Grid</a><a class="nav-link" href="#pseudo"><span class="nav-num">12</span>Pseudo-clases y pseudo-eleme</a><a class="nav-link" href="#variables"><span class="nav-num">13</span>Variables CSS y sistema de d</a><a class="nav-link" href="#responsive"><span class="nav-num">14</span>Media queries y diseño respo</a><a class="nav-link" href="#container-queries"><span class="nav-num">15</span>Container queries y componen</a><a class="nav-link" href="#transiciones"><span class="nav-num">16</span>Transform y transitions</a><a class="nav-link" href="#animaciones"><span class="nav-num">17</span>Animaciones con @keyframes</a><a class="nav-link" href="#funciones-modernas"><span class="nav-num">18</span>Funciones modernas</a><a class="nav-link" href="#css-moderno"><span class="nav-num">19</span>Nesting, </a><a class="nav-link" href="#proyecto-final"><span class="nav-num">20</span>Proyecto final</a></nav>
+  <div class="search-row"><div class="search-wrap"><span class="search-icon">⌕</span><input id="search" placeholder="Buscar selector, Flexbox, Grid, responsive, animaciones..."></div><div class="filters"><button class="filter-btn active" data-group="Todos">Todos</button><button class="filter-btn" data-group="Fundamentos">Fundamentos</button><button class="filter-btn" data-group="Layout">Layout</button><button class="filter-btn" data-group="Responsive">Responsive</button><button class="filter-btn" data-group="Movimiento">Movimiento</button></div></div>
+</div></header>
+
+<main>
+<section class="hero"><span class="eyebrow">◉ Ruta para principiantes · práctica visual</span><h1><span class="gradient-text">Aprende CSS desde cero</span><br>viendo qué cambia en pantalla</h1><p class="hero-lead">Empieza por reglas sencillas y termina construyendo una interfaz completa. Cada lección explica el concepto con palabras simples, muestra CSS copiable, incluye una vista previa y te deja modificar únicamente el CSS en un laboratorio.</p>
+  <div class="hero-grid"><div class="stat"><strong>20</strong><span>lecciones en orden</span></div><div class="stat"><strong>20</strong><span>mini proyectos</span></div><div class="stat"><strong>CSS</strong><span>laboratorios editables</span></div><div class="stat"><strong>1</strong><span>proyecto final</span></div></div>
+  <div class="route"><div class="route-step"><strong>1 · Fundamentos</strong>Selectores y cascada</div><div class="route-step"><strong>2 · Caja</strong>Espacios y tipografía</div><div class="route-step"><strong>3 · Layout</strong>Flexbox + Grid</div><div class="route-step"><strong>4 · Responsive</strong>Media + container</div><div class="route-step"><strong>5 · Movimiento</strong>Transiciones + animación</div></div>
+</section>
+<div class="content"><div id="empty" class="empty">No encontré lecciones con ese filtro. Prueba otra palabra.</div>
+<section class="course-section" id="inicio" data-group="Inicio" data-title="CSS desde cero: primero entiende, luego diseña" style="--section-accent:#1572b6">
+  <div class="section-kicker">00 · INICIO</div>
+  <h2>CSS desde cero: primero entiende, luego diseña</h2>
+  <p class="lead">Aprenderás CSS en un orden pensado para principiantes. Cada lección tiene explicación sencilla, código, vista previa, laboratorio de CSS y un mini proyecto independiente.</p>
+  <div class="study-strip"><span class="group-badge">Inicio</span><div class="study-spacer"></div><button class="study-btn" data-study="inicio">✓ Marcar entendida</button><button class="fav-btn" data-fav="inicio" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>CSS es el lenguaje que decide cómo se ve una página: color, tamaño, espacio, posición, columnas, animaciones y adaptación a distintos tamaños de pantalla.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Piensa en HTML como la estructura de una casa y en CSS como pintura, muebles, iluminación y distribución visual.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador lee las reglas CSS, busca qué elementos coinciden con los selectores y calcula el estilo final que debe dibujar.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>No intentes memorizar propiedades. Aprende a reconocer problemas visuales y a elegir la herramienta CSS adecuada.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Regla</strong><span>selector + declaraciones</span></div><div><strong>Propiedad</strong><span>qué característica cambias</span></div><div><strong>Valor</strong><span>cómo quieres que se vea</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Tu primera regla CSS</strong><small>Una regla selecciona un elemento y cambia una o más propiedades.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Una regla selecciona un elemento y cambia una o más propiedades.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.mensaje {
+  color: #155e75;
+  background: #ecfeff;
+  padding: 16px;
+  border-radius: 14px;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Observa que el contenido no cambia; cambia únicamente su presentación visual.</div><div class="tip"><strong>Idea clave:</strong> Lee la regla de izquierda a derecha: selecciono .mensaje y luego cambio su apariencia.</div></div>
+        <button class="lab-btn" data-lab-title="Tu primera regla CSS">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.mensaje {
+  color: #155e75;
+  background: #ecfeff;
+  padding: 16px;
+  border-radius: 14px;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;mensaje&quot;&gt;Mi primera caja con CSS&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Tu primera regla CSS" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.mensaje {
+  color: #155e75;
+  background: #ecfeff;
+  padding: 16px;
+  border-radius: 14px;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;mensaje&quot;&gt;Mi primera caja con CSS&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="inicio">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Tarjeta de presentación visual</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="inicio">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>15–20 min</strong></div><div><span>📊 NIVEL</span><strong>Muy fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/00_tarjeta/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Sirve para perder el miedo a escribir reglas CSS y comprobar rápidamente qué hace cada propiedad.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea una clase .tarjeta.</span></li><li><span class="step-num">2</span><span>Agrega un color de fondo.</span></li><li><span class="step-num">3</span><span>Añade padding y border-radius.</span></li><li><span class="step-num">4</span><span>Cambia el color y tamaño del título.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una tarjeta visual con título y texto.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Añade una sombra suave.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="conectar-css" data-group="Fundamentos" data-title="Preparar un archivo styles.css" style="--section-accent:#1572b6">
+  <div class="section-kicker">01 · FUNDAMENTOS</div>
+  <h2>Preparar un archivo styles.css</h2>
+  <p class="lead">CSS no necesita instalación. Para practicar solo necesitas un archivo .css conectado a una página de prueba.</p>
+  <div class="study-strip"><span class="group-badge">Fundamentos</span><div class="study-spacer"></div><button class="study-btn" data-study="conectar-css">✓ Marcar entendida</button><button class="fav-btn" data-fav="conectar-css" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>El archivo styles.css contiene tus reglas. La página de práctica ya aporta la estructura; tú te concentras en el diseño.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como tener un cuaderno exclusivo para todas las decisiones visuales del sitio.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador carga styles.css y aplica sus reglas al documento. Si el archivo no está enlazado o la ruta es incorrecta, no verás cambios.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Cuando algo “no funciona”, primero confirma que styles.css realmente se está cargando.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>styles.css</strong><span>hoja de estilos principal</span></div><div><strong>Ruta</strong><span>ubicación del archivo</span></div><div><strong>DevTools</strong><span>herramientas del navegador</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Estructura mínima</strong><small>Empieza con una regla global sencilla que sea fácil de reconocer.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Empieza con una regla global sencilla que sea fácil de reconocer.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>body {
+  font-family: system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+h1 {
+  color: #1572b6;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Busca un cambio evidente: fondo, color del título y tipografía.</div><div class="tip"><strong>Idea clave:</strong> Haz primero una prueba visual muy evidente; luego empieza el diseño real.</div></div>
+        <button class="lab-btn" data-lab-title="Estructura mínima">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>body {
+  font-family: system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+h1 {
+  color: #1572b6;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;main&gt;&lt;h1&gt;CSS conectado&lt;/h1&gt;&lt;p&gt;Si ves fondo claro y título azul, la hoja se aplicó.&lt;/p&gt;&lt;/main&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Estructura mínima" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}body {
+  font-family: system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+h1 {
+  color: #1572b6;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;main&gt;&lt;h1&gt;CSS conectado&lt;/h1&gt;&lt;p&gt;Si ves fondo claro y título azul, la hoja se aplicó.&lt;/p&gt;&lt;/main&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="conectar-css">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Comprobador de styles.css</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="conectar-css">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>15 min</strong></div><div><span>📊 NIVEL</span><strong>Muy fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/01_conexion/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Te enseña a distinguir un problema de CSS de un problema de ruta o carga del archivo.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Pon un fondo diferente al body.</span></li><li><span class="step-num">2</span><span>Cambia el color de h1.</span></li><li><span class="step-num">3</span><span>Agrega una regla para p.</span></li><li><span class="step-num">4</span><span>Verifica los estilos desde el navegador.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una página de prueba donde sea obvio que CSS está conectado.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Agrega un comentario CSS con tu nombre.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="sintaxis-selectores" data-group="Fundamentos" data-title="Sintaxis, comentarios y selectores" style="--section-accent:#1572b6">
+  <div class="section-kicker">02 · FUNDAMENTOS</div>
+  <h2>Sintaxis, comentarios y selectores</h2>
+  <p class="lead">Antes de diseñar layouts necesitas saber cómo apuntar exactamente al elemento que quieres modificar.</p>
+  <div class="study-strip"><span class="group-badge">Fundamentos</span><div class="study-spacer"></div><button class="study-btn" data-study="sintaxis-selectores">✓ Marcar entendida</button><button class="fav-btn" data-fav="sintaxis-selectores" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>Un selector es la forma de decirle al navegador “aplica estas reglas aquí”. Las clases son la opción más reutilizable para principiantes.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como etiquetar cajas: “todas las cajas con etiqueta destacado tendrán borde azul”.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El motor CSS compara cada selector con los elementos. Si coincide, incorpora sus declaraciones al cálculo de estilos.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Usa clases para estilos reutilizables y evita selectores demasiado largos.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Elemento</strong><span>p, h1, button</span></div><div><strong>Clase</strong><span>.tarjeta</span></div><div><strong>ID</strong><span>#principal</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Selectores básicos</strong><small>Elemento, clase e ID tienen distintos usos.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Elemento, clase e ID tienen distintos usos.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>p { color: #475569; }
+
+.destacado {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+#principal {
+  border-left: 4px solid #1572b6;
+  padding-left: 12px;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El segundo párrafo recibe tanto la regla de p como la regla .destacado.</div><div class="tip"><strong>Idea clave:</strong> La clase empieza con punto. El ID empieza con #.</div></div>
+        <button class="lab-btn" data-lab-title="Selectores básicos">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>p { color: #475569; }
+
+.destacado {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+#principal {
+  border-left: 4px solid #1572b6;
+  padding-left: 12px;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;section id=&quot;principal&quot;&gt;&lt;p&gt;Texto normal&lt;/p&gt;&lt;p class=&quot;destacado&quot;&gt;Texto destacado&lt;/p&gt;&lt;/section&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Selectores básicos" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}p { color: #475569; }
+
+.destacado {
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+#principal {
+  border-left: 4px solid #1572b6;
+  padding-left: 12px;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;section id=&quot;principal&quot;&gt;&lt;p&gt;Texto normal&lt;/p&gt;&lt;p class=&quot;destacado&quot;&gt;Texto destacado&lt;/p&gt;&lt;/section&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+<details class="topic" open>
+  <summary><span class="topic-num">02</span><span class="topic-title"><strong>Selectores combinados</strong><small>Puedes seleccionar elementos según su relación.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Puedes seleccionar elementos según su relación.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.menu a {
+  color: #334155;
+}
+
+.menu &gt; a:hover {
+  color: #1572b6;
+}
+
+.tarjeta + .tarjeta {
+  margin-top: 12px;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El espacio busca descendientes; &gt; exige hijo directo; + busca el hermano inmediatamente siguiente.</div><div class="tip"><strong>Idea clave:</strong> Primero domina elemento, clase y descendiente; luego usa combinadores.</div></div>
+        <button class="lab-btn" data-lab-title="Selectores combinados">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.menu a {
+  color: #334155;
+}
+
+.menu &gt; a:hover {
+  color: #1572b6;
+}
+
+.tarjeta + .tarjeta {
+  margin-top: 12px;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;nav class=&quot;menu&quot;&gt;&lt;a href=&quot;#&quot;&gt;Inicio&lt;/a&gt; &lt;a href=&quot;#&quot;&gt;Curso&lt;/a&gt;&lt;/nav&gt;&lt;div class=&quot;tarjeta&quot;&gt;Uno&lt;/div&gt;&lt;div class=&quot;tarjeta&quot;&gt;Dos&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Selectores combinados" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.menu a {
+  color: #334155;
+}
+
+.menu &gt; a:hover {
+  color: #1572b6;
+}
+
+.tarjeta + .tarjeta {
+  margin-top: 12px;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;nav class=&quot;menu&quot;&gt;&lt;a href=&quot;#&quot;&gt;Inicio&lt;/a&gt; &lt;a href=&quot;#&quot;&gt;Curso&lt;/a&gt;&lt;/nav&gt;&lt;div class=&quot;tarjeta&quot;&gt;Uno&lt;/div&gt;&lt;div class=&quot;tarjeta&quot;&gt;Dos&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="sintaxis-selectores">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Ficha con estados</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="sintaxis-selectores">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>20 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/02_selectores/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Practicarás a seleccionar sin llenar el HTML de estilos inline.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Estiliza todos los p.</span></li><li><span class="step-num">2</span><span>Crea .importante.</span></li><li><span class="step-num">3</span><span>Crea .muted.</span></li><li><span class="step-num">4</span><span>Agrega un hover a un enlace.</span></li><li><span class="step-num">5</span><span>Comenta una regla con /* ... */.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una ficha con estilos reutilizables mediante clases.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Usa un selector [data-estado=&quot;nuevo&quot;].</p></article></div>
+</div>
+</section>
+<section class="course-section" id="cascada" data-group="Fundamentos" data-title="Cascada, especificidad e herencia" style="--section-accent:#1572b6">
+  <div class="section-kicker">03 · FUNDAMENTOS</div>
+  <h2>Cascada, especificidad e herencia</h2>
+  <p class="lead">CSS puede recibir varias reglas para el mismo elemento. Entender cómo decide cuál gana evita usar !important sin necesidad.</p>
+  <div class="study-strip"><span class="group-badge">Fundamentos</span><div class="study-spacer"></div><button class="study-btn" data-study="cascada">✓ Marcar entendida</button><button class="fav-btn" data-fav="cascada" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>La cascada combina origen, importancia, especificidad y orden. La herencia permite que ciertas propiedades pasen del padre a los hijos.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como varias instrucciones sobre la misma camiseta: gana la instrucción con mayor prioridad; si empatan, gana la última.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador calcula un estilo final por propiedad. Color puede venir de una regla e incluso font-family del padre.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Cuando una regla no se aplica, revisa primero selector, especificidad y orden antes de añadir !important.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Cascada</strong><span>resuelve conflictos</span></div><div><strong>Especificidad</strong><span>peso del selector</span></div><div><strong>Herencia</strong><span>propiedades que pasan del padre</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Qué regla gana</strong><small>Una clase suele tener más especificidad que un selector de elemento.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Una clase suele tener más especificidad que un selector de elemento.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>p { color: #64748b; }
+
+.texto { color: #0f766e; }
+
+.contenedor .texto {
+  color: #7c3aed;
+}
+
+/* mismo peso: gana la última */
+.texto { font-weight: 600; }</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El texto termina violeta porque .contenedor .texto es más específico que .texto.</div><div class="tip"><strong>Idea clave:</strong> Especificidad no significa “mejor”. Busca selectores simples.</div><div class="mistake"><strong>Error común:</strong> Evita cadenas de IDs y !important salvo casos muy concretos.</div></div>
+        <button class="lab-btn" data-lab-title="Qué regla gana">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>p { color: #64748b; }
+
+.texto { color: #0f766e; }
+
+.contenedor .texto {
+  color: #7c3aed;
+}
+
+/* mismo peso: gana la última */
+.texto { font-weight: 600; }</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;contenedor&quot;&gt;&lt;p class=&quot;texto&quot;&gt;La cascada decide mi color.&lt;/p&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Qué regla gana" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}p { color: #64748b; }
+
+.texto { color: #0f766e; }
+
+.contenedor .texto {
+  color: #7c3aed;
+}
+
+/* mismo peso: gana la última */
+.texto { font-weight: 600; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;contenedor&quot;&gt;&lt;p class=&quot;texto&quot;&gt;La cascada decide mi color.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="cascada">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Detective de la cascada</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="cascada">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>20–25 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/03_cascada/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Aprenderás a depurar por qué una regla gana o pierde.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea una regla para p.</span></li><li><span class="step-num">2</span><span>Sobrescríbela con una clase.</span></li><li><span class="step-num">3</span><span>Añade una regla más específica.</span></li><li><span class="step-num">4</span><span>Cambia el orden y observa el resultado.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una demostración comentada de tres niveles de prioridad.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Prueba inherit, initial y unset.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="unidades-colores" data-group="Fundamentos" data-title="Colores, unidades y tamaños" style="--section-accent:#1572b6">
+  <div class="section-kicker">04 · FUNDAMENTOS</div>
+  <h2>Colores, unidades y tamaños</h2>
+  <p class="lead">Elegir buenas unidades hace que el diseño sea más flexible y fácil de adaptar.</p>
+  <div class="study-strip"><span class="group-badge">Fundamentos</span><div class="study-spacer"></div><button class="study-btn" data-study="unidades-colores">✓ Marcar entendida</button><button class="fav-btn" data-fav="unidades-colores" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>px es útil para detalles concretos; rem para escalas; % para proporciones; vw/vh para viewport; clamp() permite tamaños fluidos.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Piensa en px como una medida fija y en rem/% como medidas relacionadas con algo más grande.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Cada unidad se resuelve contra una referencia distinta. Por ejemplo, rem usa el tamaño raíz y % depende de la propiedad y del contenedor.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>No uses una sola unidad para todo. Usa cada una donde tenga sentido.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>px</strong><span>medida fija CSS</span></div><div><strong>rem</strong><span>relativa a la raíz</span></div><div><strong>clamp()</strong><span>mínimo + fluido + máximo</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Escala flexible</strong><small>Puedes combinar variables y clamp() para una tipografía que responda al ancho.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Puedes combinar variables y clamp() para una tipografía que responda al ancho.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>:root {
+  --azul: #1572b6;
+  --texto: #0f172a;
+}
+
+.titulo {
+  color: var(--azul);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+}
+
+.panel {
+  width: min(92%, 720px);
+  padding: 1.5rem;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Reduce y amplía la ventana: el título crece dentro de límites seguros.</div><div class="tip"><strong>Idea clave:</strong> clamp(min, preferido, max) es muy útil para fuentes y espacios.</div></div>
+        <button class="lab-btn" data-lab-title="Escala flexible">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>:root {
+  --azul: #1572b6;
+  --texto: #0f172a;
+}
+
+.titulo {
+  color: var(--azul);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+}
+
+.panel {
+  width: min(92%, 720px);
+  padding: 1.5rem;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;panel&quot;&gt;&lt;h2 class=&quot;titulo&quot;&gt;Escala fluida&lt;/h2&gt;&lt;p&gt;Este panel tiene un ancho máximo.&lt;/p&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Escala flexible" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}:root {
+  --azul: #1572b6;
+  --texto: #0f172a;
+}
+
+.titulo {
+  color: var(--azul);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+}
+
+.panel {
+  width: min(92%, 720px);
+  padding: 1.5rem;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;panel&quot;&gt;&lt;h2 class=&quot;titulo&quot;&gt;Escala fluida&lt;/h2&gt;&lt;p&gt;Este panel tiene un ancho máximo.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="unidades-colores">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Escala de diseño</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="unidades-colores">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>20 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/04_unidades/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Te obliga a pensar en tamaños como un sistema y no como números aislados.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Define 3 colores en :root.</span></li><li><span class="step-num">2</span><span>Crea 3 tamaños con rem.</span></li><li><span class="step-num">3</span><span>Usa min() para un contenedor.</span></li><li><span class="step-num">4</span><span>Usa clamp() en un título.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una pequeña escala de colores, tamaños y espacios.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Añade una variable --radio para border-radius.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="box-model" data-group="Fundamentos" data-title="Box Model: contenido, padding, border y margin" style="--section-accent:#1572b6">
+  <div class="section-kicker">05 · FUNDAMENTOS</div>
+  <h2>Box Model: contenido, padding, border y margin</h2>
+  <p class="lead">Todo elemento visible se comporta como una caja. Dominar esta idea evita la mayoría de problemas de tamaño y espacio.</p>
+  <div class="study-strip"><span class="group-badge">Fundamentos</span><div class="study-spacer"></div><button class="study-btn" data-study="box-model">✓ Marcar entendida</button><button class="fav-btn" data-fav="box-model" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>Padding es espacio interno; margin es espacio externo; border rodea la caja; width/height controlan el contenido o la caja según box-sizing.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Imagina un regalo: contenido = objeto, padding = espuma, border = caja, margin = distancia con otras cajas.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Con box-sizing:border-box, el padding y borde se incluyen dentro del ancho declarado, lo que simplifica layouts.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Usa box-sizing:border-box globalmente para cálculos más predecibles.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Padding</strong><span>espacio dentro</span></div><div><strong>Margin</strong><span>espacio fuera</span></div><div><strong>box-sizing</strong><span>cómo se calcula width</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Caja predecible</strong><small>La regla global evita que padding aumente el ancho esperado.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>La regla global evita que padding aumente el ancho esperado.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.caja {
+  width: 320px;
+  max-width: 100%;
+  padding: 24px;
+  border: 4px solid #60a5fa;
+  margin: 20px auto;
+  border-radius: 18px;
+  background: #eff6ff;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> La caja mantiene su ancho total aunque tenga padding y borde.</div><div class="tip"><strong>Idea clave:</strong> Abre DevTools y observa el diagrama Box Model.</div></div>
+        <button class="lab-btn" data-lab-title="Caja predecible">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.caja {
+  width: 320px;
+  max-width: 100%;
+  padding: 24px;
+  border: 4px solid #60a5fa;
+  margin: 20px auto;
+  border-radius: 18px;
+  background: #eff6ff;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;caja&quot;&gt;&lt;strong&gt;Contenido&lt;/strong&gt;&lt;p&gt;El padding queda dentro de los 320px.&lt;/p&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Caja predecible" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.caja {
+  width: 320px;
+  max-width: 100%;
+  padding: 24px;
+  border: 4px solid #60a5fa;
+  margin: 20px auto;
+  border-radius: 18px;
+  background: #eff6ff;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;caja&quot;&gt;&lt;strong&gt;Contenido&lt;/strong&gt;&lt;p&gt;El padding queda dentro de los 320px.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="box-model">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Tarjeta Box Model</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="box-model">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>20 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/05_box_model/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Convertirás spacing en algo visual y fácil de depurar.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea una tarjeta de 320px.</span></li><li><span class="step-num">2</span><span>Añade padding.</span></li><li><span class="step-num">3</span><span>Añade border.</span></li><li><span class="step-num">4</span><span>Centra con margin auto.</span></li><li><span class="step-num">5</span><span>Activa box-sizing:border-box.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una tarjeta centrada cuyo tamaño no se rompe al añadir padding.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Prueba outline y compáralo con border.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="tipografia" data-group="Fundamentos" data-title="Tipografía y legibilidad" style="--section-accent:#1572b6">
+  <div class="section-kicker">06 · FUNDAMENTOS</div>
+  <h2>Tipografía y legibilidad</h2>
+  <p class="lead">Una interfaz clara depende tanto de la tipografía como de los colores o el layout.</p>
+  <div class="study-strip"><span class="group-badge">Fundamentos</span><div class="study-spacer"></div><button class="study-btn" data-study="tipografia">✓ Marcar entendida</button><button class="fav-btn" data-fav="tipografia" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>font-family, font-size, font-weight, line-height y letter-spacing controlan la lectura y jerarquía.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como un libro: un título, un subtítulo y un párrafo no deberían tener el mismo peso visual.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador usa métricas de la fuente para calcular líneas, alturas y saltos. line-height generoso mejora la lectura de párrafos.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>No uses tamaños diminutos. Mantén una jerarquía clara y un ancho de línea cómodo.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>line-height</strong><span>altura entre líneas</span></div><div><strong>font-weight</strong><span>grosor</span></div><div><strong>ch</strong><span>unidad basada en caracteres</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Jerarquía de texto</strong><small>Combina tamaño, peso y ancho de línea para mejorar lectura.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Combina tamaño, peso y ancho de línea para mejorar lectura.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.articulo {
+  max-width: 68ch;
+  margin-inline: auto;
+}
+
+.articulo h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.articulo p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #475569;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El título llama la atención, pero el párrafo sigue siendo cómodo de leer.</div><div class="tip"><strong>Idea clave:</strong> ch es útil para limitar el ancho de textos largos.</div></div>
+        <button class="lab-btn" data-lab-title="Jerarquía de texto">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.articulo {
+  max-width: 68ch;
+  margin-inline: auto;
+}
+
+.articulo h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.articulo p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #475569;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;article class=&quot;articulo&quot;&gt;&lt;h2&gt;Una jerarquía clara guía la mirada&lt;/h2&gt;&lt;p&gt;El cuerpo del texto mantiene una longitud de línea cómoda y bastante aire entre renglones.&lt;/p&gt;&lt;/article&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Jerarquía de texto" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.articulo {
+  max-width: 68ch;
+  margin-inline: auto;
+}
+
+.articulo h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.articulo p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #475569;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;article class=&quot;articulo&quot;&gt;&lt;h2&gt;Una jerarquía clara guía la mirada&lt;/h2&gt;&lt;p&gt;El cuerpo del texto mantiene una longitud de línea cómoda y bastante aire entre renglones.&lt;/p&gt;&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="tipografia">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Artículo legible</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="tipografia">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>20 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/06_tipografia/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Practicarás jerarquía sin depender de imágenes ni componentes complejos.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Define fuente base.</span></li><li><span class="step-num">2</span><span>Crea escala para h1/h2/p.</span></li><li><span class="step-num">3</span><span>Ajusta line-height.</span></li><li><span class="step-num">4</span><span>Limita párrafos con ch.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Un bloque de artículo con jerarquía clara.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Usa text-wrap:balance en el título.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="fondos-bordes" data-group="Diseño visual" data-title="Fondos, bordes, radios y sombras" style="--section-accent:#1572b6">
+  <div class="section-kicker">07 · DISEÑO VISUAL</div>
+  <h2>Fondos, bordes, radios y sombras</h2>
+  <p class="lead">Estas propiedades aportan profundidad, agrupación y énfasis sin cambiar el layout principal.</p>
+  <div class="study-strip"><span class="group-badge">Diseño visual</span><div class="study-spacer"></div><button class="study-btn" data-study="fondos-bordes">✓ Marcar entendida</button><button class="fav-btn" data-fav="fondos-bordes" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>background puede ser color, gradiente o imagen; border define contorno; border-radius suaviza esquinas; box-shadow crea profundidad.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Piensa en las tarjetas de una app: fondo separa, borde delimita y sombra eleva.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Gradientes y sombras se renderizan como capas. Demasiadas sombras grandes pueden afectar rendimiento y claridad.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Busca sombras suaves y bordes discretos; no conviertas cada elemento en una tarjeta flotante.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>linear-gradient</strong><span>gradiente lineal</span></div><div><strong>border-radius</strong><span>redondeo</span></div><div><strong>box-shadow</strong><span>sombra de caja</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Tarjeta premium</strong><small>Un borde suave y una sombra amplia pueden dar profundidad sin exagerar.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Un borde suave y una sombra amplia pueden dar profundidad sin exagerar.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.premium {
+  padding: 28px;
+  border: 1px solid #dbeafe;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, #dbeafe, transparent 45%),
+    #ffffff;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, .10);
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Mira cómo el gradiente añade interés sin impedir la lectura.</div><div class="tip"><strong>Idea clave:</strong> Usa rgba() para controlar la transparencia de sombras.</div></div>
+        <button class="lab-btn" data-lab-title="Tarjeta premium">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.premium {
+  padding: 28px;
+  border: 1px solid #dbeafe;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, #dbeafe, transparent 45%),
+    #ffffff;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, .10);
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;premium&quot;&gt;&lt;strong&gt;Tarjeta premium&lt;/strong&gt;&lt;p&gt;Fondo en capas, borde y sombra suave.&lt;/p&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Tarjeta premium" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.premium {
+  padding: 28px;
+  border: 1px solid #dbeafe;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, #dbeafe, transparent 45%),
+    #ffffff;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, .10);
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;premium&quot;&gt;&lt;strong&gt;Tarjeta premium&lt;/strong&gt;&lt;p&gt;Fondo en capas, borde y sombra suave.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="fondos-bordes">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Tarjeta de producto</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="fondos-bordes">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>25 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/07_superficies/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Aprenderás a crear superficies visuales sin tocar Flexbox o Grid todavía.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea fondo blanco.</span></li><li><span class="step-num">2</span><span>Añade borde.</span></li><li><span class="step-num">3</span><span>Redondea las esquinas.</span></li><li><span class="step-num">4</span><span>Agrega una sombra.</span></li><li><span class="step-num">5</span><span>Añade un gradiente sutil.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una tarjeta visualmente cuidada.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Añade inset shadow muy suave.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="display-overflow" data-group="Layout" data-title="Display, overflow y visibilidad" style="--section-accent:#1572b6">
+  <div class="section-kicker">08 · LAYOUT</div>
+  <h2>Display, overflow y visibilidad</h2>
+  <p class="lead">display decide cómo participa una caja en el flujo. overflow controla qué ocurre cuando el contenido no cabe.</p>
+  <div class="study-strip"><span class="group-badge">Layout</span><div class="study-spacer"></div><button class="study-btn" data-study="display-overflow">✓ Marcar entendida</button><button class="fav-btn" data-fav="display-overflow" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>block ocupa línea completa; inline fluye con texto; inline-block mezcla ambos; none retira el elemento del layout.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como decidir si cada mueble ocupa toda una pared, comparte fila o desaparece temporalmente.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>display modifica el tipo de caja generada. overflow puede recortar, mostrar barras o permitir scroll.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>No uses overflow:hidden para “arreglar” un layout roto sin entender qué se está desbordando.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>block</strong><span>caja de bloque</span></div><div><strong>inline</strong><span>fluye en línea</span></div><div><strong>overflow</strong><span>contenido que excede</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Chips y recorte</strong><small>inline-flex es útil para elementos pequeños; overflow controla textos muy largos.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>inline-flex es útil para elementos pequeños; overflow controla textos muy largos.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.nombre {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El chip ocupa solo lo necesario y el texto largo se corta con puntos suspensivos.</div><div class="tip"><strong>Idea clave:</strong> text-overflow:ellipsis necesita overflow oculto y white-space:nowrap.</div></div>
+        <button class="lab-btn" data-lab-title="Chips y recorte">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.nombre {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;span class=&quot;chip&quot;&gt;CSS&lt;/span&gt;&lt;p class=&quot;nombre&quot;&gt;Un nombre extremadamente largo que no cabe completo en la tarjeta&lt;/p&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Chips y recorte" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.nombre {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;span class=&quot;chip&quot;&gt;CSS&lt;/span&gt;&lt;p class=&quot;nombre&quot;&gt;Un nombre extremadamente largo que no cabe completo en la tarjeta&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="display-overflow">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Lista de etiquetas</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="display-overflow">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>20 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/08_display/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Verás cómo pequeñas decisiones de display cambian el comportamiento de la interfaz.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea 4 chips.</span></li><li><span class="step-num">2</span><span>Usa inline-flex.</span></li><li><span class="step-num">3</span><span>Recorta un nombre largo con ellipsis.</span></li><li><span class="step-num">4</span><span>Oculta un elemento con display:none y vuelve a mostrarlo.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una fila de etiquetas con texto controlado.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Prueba visibility:hidden y compárala con display:none.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="position" data-group="Layout" data-title="Position, offsets y z-index" style="--section-accent:#1572b6">
+  <div class="section-kicker">09 · LAYOUT</div>
+  <h2>Position, offsets y z-index</h2>
+  <p class="lead">Position sirve para badges, barras fijas, elementos pegajosos y capas superpuestas.</p>
+  <div class="study-strip"><span class="group-badge">Layout</span><div class="study-spacer"></div><button class="study-btn" data-study="position">✓ Marcar entendida</button><button class="fav-btn" data-fav="position" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>relative crea contexto; absolute se posiciona respecto a un ancestro; fixed respecto al viewport; sticky se pega al hacer scroll.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Piensa en una etiqueta “Nuevo” pegada en la esquina de una tarjeta.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Un elemento posicionado puede salir del flujo normal. z-index funciona dentro de contextos de apilamiento.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>No construyas layouts completos con position:absolute; úsalo para casos específicos.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>relative</strong><span>crea referencia</span></div><div><strong>absolute</strong><span>sale del flujo</span></div><div><strong>z-index</strong><span>orden de capas</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Badge en una esquina</strong><small>El padre relativo sirve como referencia para el hijo absoluto.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>El padre relativo sirve como referencia para el hijo absoluto.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.producto {
+  position: relative;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #1572b6;
+  color: white;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El badge se ubica con top/right dentro de la tarjeta, no respecto a toda la página.</div><div class="tip"><strong>Idea clave:</strong> Si absolute se va a una esquina inesperada, revisa el ancestro con position:relative.</div></div>
+        <button class="lab-btn" data-lab-title="Badge en una esquina">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.producto {
+  position: relative;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #1572b6;
+  color: white;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;producto&quot;&gt;&lt;span class=&quot;badge&quot;&gt;Nuevo&lt;/span&gt;&lt;h3&gt;Curso CSS&lt;/h3&gt;&lt;p&gt;Badge posicionado sobre la tarjeta.&lt;/p&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Badge en una esquina" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.producto {
+  position: relative;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #1572b6;
+  color: white;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;producto&quot;&gt;&lt;span class=&quot;badge&quot;&gt;Nuevo&lt;/span&gt;&lt;h3&gt;Curso CSS&lt;/h3&gt;&lt;p&gt;Badge posicionado sobre la tarjeta.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="position">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Tarjeta con badge</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="position">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>20 min</strong></div><div><span>📊 NIVEL</span><strong>Fácil</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/09_position/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Es un caso real y sencillo para comprender el sistema de posicionamiento.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea un padre relative.</span></li><li><span class="step-num">2</span><span>Crea un badge absolute.</span></li><li><span class="step-num">3</span><span>Mueve con top/right.</span></li><li><span class="step-num">4</span><span>Prueba z-index.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Tarjeta con etiqueta superpuesta.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Crea una barra sticky.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="flexbox" data-group="Layout" data-title="Flexbox: alinear en una dimensión" style="--section-accent:#1572b6">
+  <div class="section-kicker">10 · LAYOUT</div>
+  <h2>Flexbox: alinear en una dimensión</h2>
+  <p class="lead">Flexbox es una de las herramientas más importantes para menús, barras, filas de tarjetas y alineación vertical.</p>
+  <div class="study-strip"><span class="group-badge">Layout</span><div class="study-spacer"></div><button class="study-btn" data-study="flexbox">✓ Marcar entendida</button><button class="fav-btn" data-fav="flexbox" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>El contenedor define el eje principal con flex-direction. justify-content alinea en ese eje y align-items en el eje cruzado.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como organizar personas en una fila o columna y decidir cómo repartir el espacio entre ellas.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Los hijos se convierten en flex items. flex-grow, flex-shrink y flex-basis controlan cómo ocupan el espacio disponible.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Antes de tocar márgenes uno por uno, revisa si el contenedor Flex puede resolver la alineación.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>main axis</strong><span>eje principal</span></div><div><strong>cross axis</strong><span>eje cruzado</span></div><div><strong>gap</strong><span>espacio entre items</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Barra flexible</strong><small>Distribuye marca, navegación y botón sin posicionamiento manual.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Distribuye marca, navegación y botón sin posicionamiento manual.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Los elementos se reparten automáticamente y las acciones pueden saltar de línea.</div><div class="tip"><strong>Idea clave:</strong> gap suele ser mejor que poner margin a cada hijo.</div></div>
+        <button class="lab-btn" data-lab-title="Barra flexible">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;barra&quot;&gt;&lt;strong&gt;CSS Academy&lt;/strong&gt;&lt;div class=&quot;acciones&quot;&gt;&lt;button&gt;Inicio&lt;/button&gt;&lt;button&gt;Curso&lt;/button&gt;&lt;button&gt;Perfil&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Barra flexible" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;barra&quot;&gt;&lt;strong&gt;CSS Academy&lt;/strong&gt;&lt;div class=&quot;acciones&quot;&gt;&lt;button&gt;Inicio&lt;/button&gt;&lt;button&gt;Curso&lt;/button&gt;&lt;button&gt;Perfil&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+<details class="topic" open>
+  <summary><span class="topic-num">02</span><span class="topic-title"><strong>Tarjetas flexibles</strong><small>flex permite crear columnas que crecen y saltan de línea.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>flex permite crear columnas que crecen y saltan de línea.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.fila article {
+  flex: 1 1 180px;
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 14px;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Las tarjetas crecen para llenar la fila y bajan cuando ya no caben.</div><div class="tip"><strong>Idea clave:</strong> flex: 1 1 180px = grow + shrink + basis.</div></div>
+        <button class="lab-btn" data-lab-title="Tarjetas flexibles">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.fila article {
+  flex: 1 1 180px;
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 14px;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;fila&quot;&gt;&lt;article&gt;A&lt;/article&gt;&lt;article&gt;B&lt;/article&gt;&lt;article&gt;C&lt;/article&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Tarjetas flexibles" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.fila article {
+  flex: 1 1 180px;
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 14px;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;fila&quot;&gt;&lt;article&gt;A&lt;/article&gt;&lt;article&gt;B&lt;/article&gt;&lt;article&gt;C&lt;/article&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="flexbox">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Navbar responsive con Flexbox</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="flexbox">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>30 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/10_flexbox/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Flexbox se entiende mejor con un componente real que tenga alineación y wrapping.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Activa display:flex.</span></li><li><span class="step-num">2</span><span>Alinea verticalmente.</span></li><li><span class="step-num">3</span><span>Separa extremos con justify-content.</span></li><li><span class="step-num">4</span><span>Usa gap.</span></li><li><span class="step-num">5</span><span>Permite flex-wrap en acciones.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una barra de navegación flexible.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Cambia flex-direction en móvil.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="grid" data-group="Layout" data-title="CSS Grid: filas y columnas" style="--section-accent:#1572b6">
+  <div class="section-kicker">11 · LAYOUT</div>
+  <h2>CSS Grid: filas y columnas</h2>
+  <p class="lead">Grid es ideal cuando necesitas controlar dos dimensiones al mismo tiempo.</p>
+  <div class="study-strip"><span class="group-badge">Layout</span><div class="study-spacer"></div><button class="study-btn" data-study="grid">✓ Marcar entendida</button><button class="fav-btn" data-fav="grid" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>grid-template-columns define columnas; gap separa celdas; minmax() y auto-fit permiten cuadrículas responsive casi sin media queries.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como una hoja cuadriculada donde decides cuántas columnas existen y cuánto espacio ocupa cada elemento.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador crea tracks (filas/columnas) y ubica cada grid item. Puede generar tracks implícitos si hace falta.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Usa Grid para estructura bidimensional; Flexbox para alineación lineal.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>track</strong><span>fila o columna</span></div><div><strong>fr</strong><span>fracción disponible</span></div><div><strong>minmax()</strong><span>rango de tamaño</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Grid automático</strong><small>auto-fit + minmax crea columnas que se adaptan al espacio disponible.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>auto-fit + minmax crea columnas que se adaptan al espacio disponible.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.grid article {
+  min-height: 120px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #eff6ff;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El número de columnas cambia sin necesidad de escribir varias media queries.</div><div class="tip"><strong>Idea clave:</strong> Empieza con repeat(auto-fit, minmax(...)) cuando quieras tarjetas adaptables.</div></div>
+        <button class="lab-btn" data-lab-title="Grid automático">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.grid article {
+  min-height: 120px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #eff6ff;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;grid&quot;&gt;&lt;article&gt;HTML&lt;/article&gt;&lt;article&gt;CSS&lt;/article&gt;&lt;article&gt;Diseño&lt;/article&gt;&lt;article&gt;Responsive&lt;/article&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Grid automático" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.grid article {
+  min-height: 120px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #eff6ff;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;grid&quot;&gt;&lt;article&gt;HTML&lt;/article&gt;&lt;article&gt;CSS&lt;/article&gt;&lt;article&gt;Diseño&lt;/article&gt;&lt;article&gt;Responsive&lt;/article&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="grid">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Galería de módulos</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="grid">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>30 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/11_grid/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Grid muestra claramente la diferencia entre filas/columnas y un simple flujo lineal.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea display:grid.</span></li><li><span class="step-num">2</span><span>Define columnas con repeat().</span></li><li><span class="step-num">3</span><span>Usa minmax().</span></li><li><span class="step-num">4</span><span>Añade gap.</span></li><li><span class="step-num">5</span><span>Haz que una tarjeta ocupe dos columnas.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Una galería adaptable de módulos.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Prueba grid-template-areas.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="pseudo" data-group="Interacción" data-title="Pseudo-clases y pseudo-elementos" style="--section-accent:#1572b6">
+  <div class="section-kicker">12 · INTERACCIÓN</div>
+  <h2>Pseudo-clases y pseudo-elementos</h2>
+  <p class="lead">Permiten diseñar estados e insertar detalles visuales sin crear clases para cada caso.</p>
+  <div class="study-strip"><span class="group-badge">Interacción</span><div class="study-spacer"></div><button class="study-btn" data-study="pseudo">✓ Marcar entendida</button><button class="fav-btn" data-fav="pseudo" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>:hover, :focus-visible, :checked y :nth-child() reaccionan a estados. ::before y ::after crean cajas generadas.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como cambiar el aspecto de un botón cuando el usuario lo señala o enfoca con teclado.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Las pseudo-clases participan en la selección; los pseudo-elementos crean una parte virtual del elemento para estilizar.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Nunca dependas solo de :hover: usuarios de teclado también necesitan un estado de foco visible.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Pseudo-clase</strong><span>:hover, :focus</span></div><div><strong>Pseudo-elemento</strong><span>::before, ::after</span></div><div><strong>focus-visible</strong><span>foco útil para teclado</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Botón accesible</strong><small>Hover y focus-visible pueden compartir intención pero no necesitan ser idénticos.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Hover y focus-visible pueden compartir intención pero no necesitan ser idénticos.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.boton {
+  border: 0;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: #1572b6;
+  color: white;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+}
+
+.boton:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 3px;
+}
+
+.boton::after { content: &quot; →&quot;; }</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Pasa el mouse y luego navega con Tab para ver dos estados distintos.</div><div class="tip"><strong>Idea clave:</strong> focus-visible evita anillos de foco molestos cuando no son necesarios y conserva accesibilidad.</div></div>
+        <button class="lab-btn" data-lab-title="Botón accesible">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.boton {
+  border: 0;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: #1572b6;
+  color: white;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+}
+
+.boton:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 3px;
+}
+
+.boton::after { content: &quot; →&quot;; }</textarea>
+        <textarea class="lab-source-html" hidden>&lt;button class=&quot;boton&quot;&gt;Continuar&lt;/button&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Botón accesible" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.boton {
+  border: 0;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: #1572b6;
+  color: white;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+}
+
+.boton:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 3px;
+}
+
+.boton::after { content: &quot; →&quot;; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button class=&quot;boton&quot;&gt;Continuar&lt;/button&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="pseudo">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Botones con estados</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="pseudo">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>25 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/12_estados/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Los estados interactivos son una parte esencial del CSS real.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Diseña estado base.</span></li><li><span class="step-num">2</span><span>Añade :hover.</span></li><li><span class="step-num">3</span><span>Añade :focus-visible.</span></li><li><span class="step-num">4</span><span>Usa ::after para un detalle.</span></li><li><span class="step-num">5</span><span>Prueba :disabled.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Un conjunto de botones con estados claros.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Estiliza un checkbox con accent-color.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="variables" data-group="Arquitectura CSS" data-title="Variables CSS y sistema de diseño" style="--section-accent:#1572b6">
+  <div class="section-kicker">13 · ARQUITECTURA CSS</div>
+  <h2>Variables CSS y sistema de diseño</h2>
+  <p class="lead">Las custom properties permiten centralizar colores, radios, espacios y otros valores reutilizables.</p>
+  <div class="study-strip"><span class="group-badge">Arquitectura CSS</span><div class="study-spacer"></div><button class="study-btn" data-study="variables">✓ Marcar entendida</button><button class="fav-btn" data-fav="variables" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>Se declaran normalmente en :root y se usan con var(--nombre). También pueden cambiar según contexto o tema.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como guardar colores y medidas en una caja de herramientas con nombres fáciles de recordar.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Las variables participan en la cascada, por eso pueden redefinirse dentro de un componente o media query.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Nombra las variables por intención cuando el proyecto crece: --color-texto en vez de --gris-700 si la intención importa.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Custom property</strong><span>--nombre: valor</span></div><div><strong>var()</strong><span>lee una variable</span></div><div><strong>:root</strong><span>alcance global habitual</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Tokens de diseño</strong><small>Define una pequeña base y úsala en varios componentes.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Define una pequeña base y úsala en varios componentes.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>:root {
+  --brand: #1572b6;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --radius: 18px;
+  --space: 16px;
+}
+
+.card {
+  padding: var(--space);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  border-top: 4px solid var(--brand);
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> Cambia --brand y observa cómo el componente responde sin buscar cada color manualmente.</div><div class="tip"><strong>Idea clave:</strong> Las variables facilitan temas y refactors visuales.</div></div>
+        <button class="lab-btn" data-lab-title="Tokens de diseño">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>:root {
+  --brand: #1572b6;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --radius: 18px;
+  --space: 16px;
+}
+
+.card {
+  padding: var(--space);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  border-top: 4px solid var(--brand);
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;card&quot;&gt;&lt;strong&gt;Sistema consistente&lt;/strong&gt;&lt;p&gt;Los valores importantes viven en variables.&lt;/p&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Tokens de diseño" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}:root {
+  --brand: #1572b6;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --radius: 18px;
+  --space: 16px;
+}
+
+.card {
+  padding: var(--space);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  border-top: 4px solid var(--brand);
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;card&quot;&gt;&lt;strong&gt;Sistema consistente&lt;/strong&gt;&lt;p&gt;Los valores importantes viven en variables.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="variables">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Mini sistema de diseño</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="variables">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>30 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/13_variables/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Te prepara para escribir CSS mantenible en proyectos más grandes.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea variables de color.</span></li><li><span class="step-num">2</span><span>Crea variables de espacio.</span></li><li><span class="step-num">3</span><span>Crea variable de radio.</span></li><li><span class="step-num">4</span><span>Úsalas en dos componentes.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Dos componentes que comparten los mismos tokens.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Crea un tema .dark redefiniendo variables.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="responsive" data-group="Responsive" data-title="Media queries y diseño responsive" style="--section-accent:#1572b6">
+  <div class="section-kicker">14 · RESPONSIVE</div>
+  <h2>Media queries y diseño responsive</h2>
+  <p class="lead">Responsive no significa “hacer todo más pequeño”; significa reorganizar el contenido cuando cambia el espacio disponible.</p>
+  <div class="study-strip"><span class="group-badge">Responsive</span><div class="study-spacer"></div><button class="study-btn" data-study="responsive">✓ Marcar entendida</button><button class="fav-btn" data-fav="responsive" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>@media permite aplicar reglas solo bajo ciertas condiciones, por ejemplo cuando el ancho es reducido.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como reorganizar una habitación cuando pasas de un salón grande a uno pequeño.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador evalúa la condición de la media query cada vez que cambia el viewport y recalcula estilos cuando corresponde.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Diseña primero un layout flexible. Usa media queries solo donde realmente cambia la estructura.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Breakpoint</strong><span>punto de cambio</span></div><div><strong>mobile-first</strong><span>base móvil + mejoras</span></div><div><strong>@media</strong><span>reglas condicionales</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Cambio de columnas</strong><small>Empieza con una columna y amplía cuando haya espacio suficiente.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Empieza con una columna y amplía cuando haya espacio suficiente.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.dashboard {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .dashboard {
+    grid-template-columns: 220px 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> En pantallas angostas todo queda apilado; al crecer aparecen columnas.</div><div class="tip"><strong>Idea clave:</strong> El breakpoint debe responder al contenido, no a un modelo específico de teléfono.</div></div>
+        <button class="lab-btn" data-lab-title="Cambio de columnas">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.dashboard {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .dashboard {
+    grid-template-columns: 220px 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;dashboard&quot;&gt;&lt;aside&gt;Menú&lt;/aside&gt;&lt;main&gt;&lt;div class=&quot;stats&quot;&gt;Contenido principal adaptable&lt;/div&gt;&lt;/main&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Cambio de columnas" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.dashboard {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .dashboard {
+    grid-template-columns: 220px 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;dashboard&quot;&gt;&lt;aside&gt;Menú&lt;/aside&gt;&lt;main&gt;&lt;div class=&quot;stats&quot;&gt;Contenido principal adaptable&lt;/div&gt;&lt;/main&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="responsive">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Dashboard responsive</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="responsive">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>35 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/14_responsive/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Practicarás reorganización real, no solo reducción de tamaños.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Empieza con una columna.</span></li><li><span class="step-num">2</span><span>Añade breakpoint para sidebar.</span></li><li><span class="step-num">3</span><span>Haz una cuadrícula de estadísticas.</span></li><li><span class="step-num">4</span><span>Revisa overflow.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Dashboard que funciona en móvil y escritorio.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Usa prefers-color-scheme para un detalle temático.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="container-queries" data-group="Responsive" data-title="Container queries y componentes adaptables" style="--section-accent:#1572b6">
+  <div class="section-kicker">15 · RESPONSIVE</div>
+  <h2>Container queries y componentes adaptables</h2>
+  <p class="lead">Las container queries permiten que un componente responda al espacio de su contenedor, no solo al ancho de la ventana.</p>
+  <div class="study-strip"><span class="group-badge">Responsive</span><div class="study-spacer"></div><button class="study-btn" data-study="container-queries">✓ Marcar entendida</button><button class="fav-btn" data-fav="container-queries" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>Primero marcas un contenedor con container-type. Luego @container aplica reglas según el ancho disponible dentro de ese contenedor.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como una tarjeta que decide su propia distribución según el espacio que recibe, sin importar dónde se coloque.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador observa el contenedor consultable y recalcula los estilos del componente cuando cambia su tamaño.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Úsalas cuando un mismo componente pueda vivir en sidebar, modal o contenido principal.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>container-type</strong><span>habilita consultas</span></div><div><strong>@container</strong><span>condición por contenedor</span></div><div><strong>cqi</strong><span>unidad relativa al contenedor</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Tarjeta autónoma</strong><small>La tarjeta cambia de vertical a horizontal según su propio contenedor.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>La tarjeta cambia de vertical a horizontal según su propio contenedor.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.zona {
+  container-type: inline-size;
+}
+
+.perfil {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+@container (min-width: 520px) {
+  .perfil {
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+  }
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> La decisión no depende directamente del viewport, sino del ancho de .zona.</div><div class="tip"><strong>Idea clave:</strong> Container queries son especialmente útiles en sistemas de componentes.</div></div>
+        <button class="lab-btn" data-lab-title="Tarjeta autónoma">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.zona {
+  container-type: inline-size;
+}
+
+.perfil {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+@container (min-width: 520px) {
+  .perfil {
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+  }
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;zona&quot;&gt;&lt;article class=&quot;perfil&quot;&gt;&lt;div style=&quot;height:90px;background:#dbeafe;border-radius:16px&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Perfil adaptable&lt;/strong&gt;&lt;p&gt;Cambia según el contenedor.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Tarjeta autónoma" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.zona {
+  container-type: inline-size;
+}
+
+.perfil {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+@container (min-width: 520px) {
+  .perfil {
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+  }
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;zona&quot;&gt;&lt;article class=&quot;perfil&quot;&gt;&lt;div style=&quot;height:90px;background:#dbeafe;border-radius:16px&quot;&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Perfil adaptable&lt;/strong&gt;&lt;p&gt;Cambia según el contenedor.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="container-queries">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Tarjeta reutilizable</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="container-queries">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>30 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/15_container/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Te enseña a diseñar componentes que funcionan en distintos lugares de una app.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea un contenedor consultable.</span></li><li><span class="step-num">2</span><span>Diseña la tarjeta vertical.</span></li><li><span class="step-num">3</span><span>Añade @container.</span></li><li><span class="step-num">4</span><span>Cambia a dos columnas.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Componente que se adapta al contenedor.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Prueba unidades cqi.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="transiciones" data-group="Movimiento" data-title="Transform y transitions" style="--section-accent:#1572b6">
+  <div class="section-kicker">16 · MOVIMIENTO</div>
+  <h2>Transform y transitions</h2>
+  <p class="lead">Las transiciones suavizan cambios entre estados. transform permite mover, escalar o rotar sin rehacer el flujo del documento.</p>
+  <div class="study-strip"><span class="group-badge">Movimiento</span><div class="study-spacer"></div><button class="study-btn" data-study="transiciones">✓ Marcar entendida</button><button class="fav-btn" data-fav="transiciones" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>transition define qué propiedad anima, duración y curva. transform es ideal para microinteracciones eficientes.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como un botón que sube suavemente al pasar el mouse en lugar de saltar de golpe.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador interpola valores entre estado inicial y final. transform y opacity suelen ser propiedades eficientes para animar.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Una transición debe ayudar a entender el cambio, no retrasar la interacción.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>transform</strong><span>mover/escalar/rotar</span></div><div><strong>transition</strong><span>suaviza cambios</span></div><div><strong>ease</strong><span>curva de tiempo</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Tarjeta interactiva</strong><small>Combina transform y box-shadow con una transición breve.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Combina transform y box-shadow con una transición breve.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.curso {
+  padding: 22px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 24px #0f172a12;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.curso:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 46px #0f172a24;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El elemento se eleva sin modificar la posición de sus vecinos.</div><div class="tip"><strong>Idea clave:</strong> Mantén microinteracciones alrededor de 150–250 ms cuando sea apropiado.</div></div>
+        <button class="lab-btn" data-lab-title="Tarjeta interactiva">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.curso {
+  padding: 22px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 24px #0f172a12;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.curso:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 46px #0f172a24;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;article class=&quot;curso&quot;&gt;&lt;strong&gt;Pasa el mouse&lt;/strong&gt;&lt;p&gt;El movimiento ayuda a indicar interacción.&lt;/p&gt;&lt;/article&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Tarjeta interactiva" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.curso {
+  padding: 22px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 24px #0f172a12;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.curso:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 46px #0f172a24;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;article class=&quot;curso&quot;&gt;&lt;strong&gt;Pasa el mouse&lt;/strong&gt;&lt;p&gt;El movimiento ayuda a indicar interacción.&lt;/p&gt;&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="transiciones">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Galería con hover</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="transiciones">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>25 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/16_transiciones/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Practicarás movimiento útil sin entrar todavía a keyframes.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Añade transition.</span></li><li><span class="step-num">2</span><span>Usa translateY en hover.</span></li><li><span class="step-num">3</span><span>Suaviza la sombra.</span></li><li><span class="step-num">4</span><span>Añade focus-visible equivalente.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Galería de tarjetas con microinteracción.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Experimenta con cubic-bezier().</p></article></div>
+</div>
+</section>
+<section class="course-section" id="animaciones" data-group="Movimiento" data-title="Animaciones con @keyframes" style="--section-accent:#1572b6">
+  <div class="section-kicker">17 · MOVIMIENTO</div>
+  <h2>Animaciones con @keyframes</h2>
+  <p class="lead">Las animaciones sirven cuando necesitas una secuencia con varios pasos o un movimiento que no depende únicamente de un cambio de estado.</p>
+  <div class="study-strip"><span class="group-badge">Movimiento</span><div class="study-spacer"></div><button class="study-btn" data-study="animaciones">✓ Marcar entendida</button><button class="fav-btn" data-fav="animaciones" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>@keyframes define etapas. animation conecta un elemento con esa secuencia y controla duración, repetición y dirección.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como definir una pequeña coreografía: empieza aquí, pasa por este punto y termina allá.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador interpola cada tramo de keyframes. Animaciones continuas deben usarse con moderación para no distraer.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Respeta prefers-reduced-motion para usuarios que reducen movimiento en su sistema.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>@keyframes</strong><span>define etapas</span></div><div><strong>animation</strong><span>ejecuta secuencia</span></div><div><strong>prefers-reduced-motion</strong><span>preferencia de accesibilidad</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Indicador de carga</strong><small>Una animación corta puede comunicar que algo está procesándose.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Una animación corta puede comunicar que algo está procesándose.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.loader {
+  width: 42px;
+  aspect-ratio: 1;
+  border: 5px solid #dbeafe;
+  border-top-color: #1572b6;
+  border-radius: 50%;
+  animation: girar .8s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader { animation: none; }
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> El borde superior actúa como referencia visual durante la rotación.</div><div class="tip"><strong>Idea clave:</strong> No uses animaciones infinitas decorativas si no aportan información.</div></div>
+        <button class="lab-btn" data-lab-title="Indicador de carga">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.loader {
+  width: 42px;
+  aspect-ratio: 1;
+  border: 5px solid #dbeafe;
+  border-top-color: #1572b6;
+  border-radius: 50%;
+  animation: girar .8s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader { animation: none; }
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;loader&quot; aria-label=&quot;Cargando&quot;&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Indicador de carga" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.loader {
+  width: 42px;
+  aspect-ratio: 1;
+  border: 5px solid #dbeafe;
+  border-top-color: #1572b6;
+  border-radius: 50%;
+  animation: girar .8s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader { animation: none; }
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;loader&quot; aria-label=&quot;Cargando&quot;&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="animaciones">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Indicador y entrada de tarjeta</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="animaciones">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>30 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/17_animaciones/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Aprenderás cuándo usar keyframes y cuándo una simple transición es suficiente.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Crea @keyframes.</span></li><li><span class="step-num">2</span><span>Anima transform.</span></li><li><span class="step-num">3</span><span>Añade duración.</span></li><li><span class="step-num">4</span><span>Prueba iteration-count.</span></li><li><span class="step-num">5</span><span>Añade prefers-reduced-motion.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Loader y animación de entrada respetuosa con accesibilidad.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Prueba animation-fill-mode:both.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="funciones-modernas" data-group="CSS moderno" data-title="Funciones modernas: calc(), min(), max(), clamp()" style="--section-accent:#1572b6">
+  <div class="section-kicker">18 · CSS MODERNO</div>
+  <h2>Funciones modernas: calc(), min(), max(), clamp()</h2>
+  <p class="lead">Las funciones CSS permiten expresar reglas de tamaño más inteligentes sin JavaScript.</p>
+  <div class="study-strip"><span class="group-badge">CSS moderno</span><div class="study-spacer"></div><button class="study-btn" data-study="funciones-modernas">✓ Marcar entendida</button><button class="fav-btn" data-fav="funciones-modernas" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>calc() combina unidades; min() elige el menor; max() el mayor; clamp() mantiene un valor entre límites.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como decir “quiero 90% del espacio, pero nunca más de 1100px”.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>El navegador evalúa estas expresiones durante el cálculo de estilos y las vuelve a evaluar cuando cambia el contexto.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Úsalas para reemplazar números rígidos cuando el diseño depende del espacio disponible.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>calc()</strong><span>opera valores CSS</span></div><div><strong>min()</strong><span>elige el menor</span></div><div><strong>clamp()</strong><span>limita un valor fluido</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Contenedor y espacios fluidos</strong><small>Un layout puede adaptar ancho, padding y tipografía con pocas reglas.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Un layout puede adaptar ancho, padding y tipografía con pocas reglas.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.contenedor {
+  width: min(92%, 1100px);
+  margin-inline: auto;
+  padding: clamp(16px, 3vw, 40px);
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 8vw, 6rem);
+}
+
+.sidebar {
+  width: max(220px, 20vw);
+}
+
+.main {
+  min-height: calc(100vh - 72px);
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> La interfaz puede crecer y reducirse sin saltos bruscos en cada breakpoint.</div><div class="tip"><strong>Idea clave:</strong> Estas funciones complementan, no reemplazan totalmente, media queries.</div></div>
+        <button class="lab-btn" data-lab-title="Contenedor y espacios fluidos">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>.contenedor {
+  width: min(92%, 1100px);
+  margin-inline: auto;
+  padding: clamp(16px, 3vw, 40px);
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 8vw, 6rem);
+}
+
+.sidebar {
+  width: max(220px, 20vw);
+}
+
+.main {
+  min-height: calc(100vh - 72px);
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;div class=&quot;contenedor&quot;&gt;&lt;h2 class=&quot;hero-title&quot;&gt;CSS fluido&lt;/h2&gt;&lt;p&gt;El espacio cambia dentro de límites controlados.&lt;/p&gt;&lt;/div&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Contenedor y espacios fluidos" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}.contenedor {
+  width: min(92%, 1100px);
+  margin-inline: auto;
+  padding: clamp(16px, 3vw, 40px);
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 8vw, 6rem);
+}
+
+.sidebar {
+  width: max(220px, 20vw);
+}
+
+.main {
+  min-height: calc(100vh - 72px);
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;contenedor&quot;&gt;&lt;h2 class=&quot;hero-title&quot;&gt;CSS fluido&lt;/h2&gt;&lt;p&gt;El espacio cambia dentro de límites controlados.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="funciones-modernas">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Hero fluido</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="funciones-modernas">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>25 min</strong></div><div><span>📊 NIVEL</span><strong>Medio</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/18_funciones/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Aprenderás a sustituir valores rígidos por reglas que se adaptan.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Limita contenedor con min().</span></li><li><span class="step-num">2</span><span>Crea padding con clamp().</span></li><li><span class="step-num">3</span><span>Crea título fluido.</span></li><li><span class="step-num">4</span><span>Usa calc() en una altura.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Hero que escala suavemente entre móvil y escritorio.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Combina calc() con variables CSS.</p></article></div>
+</div>
+</section>
+<section class="course-section" id="css-moderno" data-group="CSS moderno" data-title="Nesting, :is(), :where(), :has() y cascade layers" style="--section-accent:#1572b6">
+  <div class="section-kicker">19 · CSS MODERNO</div>
+  <h2>Nesting, :is(), :where(), :has() y cascade layers</h2>
+  <p class="lead">CSS moderno permite organizar selectores complejos con menos repetición y controlar mejor la arquitectura de estilos.</p>
+  <div class="study-strip"><span class="group-badge">CSS moderno</span><div class="study-spacer"></div><button class="study-btn" data-study="css-moderno">✓ Marcar entendida</button><button class="fav-btn" data-fav="css-moderno" title="Favorito">☆</button></div>
+  <div class="easy-panel"><div class="easy-head"><span>💡 EXPLICACIÓN FÁCIL</span><strong>Antes del código, entiende la idea</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">🙂</div><div><strong>En palabras simples</strong><p>Nesting agrupa reglas relacionadas; :is() reduce listas; :where() aporta especificidad cero; :has() selecciona según descendientes; @layer organiza prioridades.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🏠</div><div><strong>Ejemplo cotidiano</strong><p>Es como pasar de reglas sueltas a un sistema con carpetas y niveles de prioridad claros.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">⚙️</div><div><strong>¿Qué pasa por detrás?</strong><p>Estas funciones cambian cómo se construyen selectores y cómo participa una regla en la cascada.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">🧠</div><div><strong>Qué debes recordar</strong><p>Úsalas cuando ya entiendas selectores y cascada; no son un reemplazo de los fundamentos.</p></div></article>
+  </div></div>
+  <div class="dictionary"><div class="dictionary-title">📘 DICCIONARIO RÁPIDO DE ESTA LECCIÓN</div><div class="dictionary-grid"><div><strong>Nesting</strong><span>anida selectores</span></div><div><strong>:has()</strong><span>selecciona por contenido</span></div><div><strong>@layer</strong><span>ordena capas de cascada</span></div></div></div>
+  
+<details class="topic" open>
+  <summary><span class="topic-num">01</span><span class="topic-title"><strong>Componente moderno</strong><small>Agrupa estados y detecta si una tarjeta contiene una imagen.</small></span></summary>
+  <div class="topic-body">
+    <div class="topic-simple"><span>EN UNA FRASE</span><p>Agrupa estados y detecta si una tarjeta contiene una imagen.</p></div>
+    <div class="workbench">
+      <div>
+        <div class="codebox"><div class="codehead"><strong>styles.css</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>@layer base, components, utilities;
+
+@layer components {
+  .card {
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+
+    &amp; h3 { margin-top: 0; }
+
+    &amp;:is(:hover, :focus-within) {
+      border-color: #60a5fa;
+    }
+
+    &amp;:has(img) {
+      padding-top: 10px;
+    }
+  }
+}
+
+:where(.card, .panel) p {
+  color: #64748b;
+}</code></pre></div>
+        <div class="observe"><div class="look"><strong>Qué debes observar:</strong> La tarjeta agrupa sus reglas y mantiene bajo control la especificidad.</div><div class="tip"><strong>Idea clave:</strong> Verifica compatibilidad si debes soportar navegadores antiguos.</div></div>
+        <button class="lab-btn" data-lab-title="Componente moderno">✦ Abrir laboratorio · editar solo CSS</button>
+        <textarea class="lab-source-css" hidden>@layer base, components, utilities;
+
+@layer components {
+  .card {
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+
+    &amp; h3 { margin-top: 0; }
+
+    &amp;:is(:hover, :focus-within) {
+      border-color: #60a5fa;
+    }
+
+    &amp;:has(img) {
+      padding-top: 10px;
+    }
+  }
+}
+
+:where(.card, .panel) p {
+  color: #64748b;
+}</textarea>
+        <textarea class="lab-source-html" hidden>&lt;article class=&quot;card&quot;&gt;&lt;h3&gt;CSS moderno&lt;/h3&gt;&lt;p&gt;Menos repetición, misma claridad.&lt;/p&gt;&lt;/article&gt;</textarea>
+      </div>
+      <div class="preview-card"><div class="browser-bar"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i><span class="url">preview.css-academy.local</span></div><iframe loading="lazy" class="preview-frame" title="Vista previa de Componente moderno" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;*{box-sizing:border-box}body{margin:0;padding:28px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}@layer base, components, utilities;
+
+@layer components {
+  .card {
+    padding: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+
+    &amp; h3 { margin-top: 0; }
+
+    &amp;:is(:hover, :focus-within) {
+      border-color: #60a5fa;
+    }
+
+    &amp;:has(img) {
+      padding-top: 10px;
+    }
+  }
+}
+
+:where(.card, .panel) p {
+  color: #64748b;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;article class=&quot;card&quot;&gt;&lt;h3&gt;CSS moderno&lt;/h3&gt;&lt;p&gt;Menos repetición, misma claridad.&lt;/p&gt;&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div>
+    </div>
+  </div>
+</details>
+  
+<div class="practice-divider"><span></span><strong>FIN DE LA LECCIÓN · MINI PROYECTO</strong><span></span></div>
+<div class="mini-project" data-mini-project="css-moderno">
+  <div class="mini-head"><div><span class="mini-kicker">🚀 MINI PROYECTO DE LA LECCIÓN</span><h3>Refactor de componentes</h3><p>Hazlo con calma y vuelve al ejemplo cuando lo necesites.</p></div><button class="mini-complete" data-mini-complete="css-moderno">○ Pendiente</button></div>
+  <div class="mini-meta"><div><span>⏱ TIEMPO</span><strong>35 min</strong></div><div><span>📊 NIVEL</span><strong>Avanzado</strong></div><div><span>📁 CARPETA</span><code>mini_proyectos/19_moderno/</code></div></div>
+  <div class="mini-why"><span>🤔 ¿POR QUÉ HACER ESTE MINI PROYECTO?</span><p>Te enseña a modernizar CSS existente sin cambiar el HTML.</p></div>
+  <div class="mini-files"><span>ARCHIVO PRINCIPAL</span><code>styles.css</code></div>
+  <ol class="mini-steps"><li><span class="step-num">1</span><span>Agrupa una regla con nesting.</span></li><li><span class="step-num">2</span><span>Sustituye una lista por :is().</span></li><li><span class="step-num">3</span><span>Prueba :where().</span></li><li><span class="step-num">4</span><span>Crea un caso con :has().</span></li><li><span class="step-num">5</span><span>Declara dos @layer.</span></li></ol>
+  <div class="mini-end"><article class="deliver"><span>✅ ENTREGABLE</span><p>Un componente refactorizado con CSS moderno.</p></article><article class="bonus"><span>⭐ SI TERMINAS RÁPIDO</span><p>Usa @supports para una mejora progresiva.</p></article></div>
+</div>
+</section>
+<section class="course-section final-section" id="proyecto-final" data-group="Proyecto final" data-title="Proyecto final desde cero">
+  <div class="section-kicker">20 · PROYECTO FINAL DESDE CERO</div>
+  <h2>Proyecto final: Dashboard académico construido con CSS</h2>
+  <p class="lead">Empieza con una carpeta nueva. El HTML de apoyo será sencillo y estable; tu trabajo principal será construir todo el sistema visual desde <code>styles.css</code> usando lo aprendido.</p>
+  <div class="study-strip"><span class="group-badge">Proyecto final</span><div class="study-spacer"></div><button class="study-btn" data-study="proyecto-final">✓ Marcar entendida</button><button class="fav-btn" data-fav="proyecto-final">☆</button></div>
+  <div class="final-roadmap"><strong>Ruta completa del proyecto</strong><div class="final-flow"><span>1 · Tokens</span><b>→</b><span>2 · Base</span><b>→</b><span>3 · Header</span><b>→</b><span>4 · Sidebar</span><b>→</b><span>5 · Grid</span><b>→</b><span>6 · Cards</span><b>→</b><span>7 · Responsive</span><b>→</b><span>8 · Estados</span><b>→</b><span>9 · Movimiento</span></div></div>
+  <div class="easy-panel"><div class="easy-head"><span>🎯 OBJETIVO</span><strong>No copiar: construir por etapas</strong></div><div class="easy-grid">
+    <article class="easy-card simple"><div class="easy-icon">📁</div><div><strong>Carpeta</strong><p><code>proyecto_final_css/</code> con <code>index.html</code> y <code>styles.css</code>.</p></div></article>
+    <article class="easy-card daily"><div class="easy-icon">🧱</div><div><strong>HTML de apoyo</strong><p>La estructura permanece simple. No necesitas aprender JavaScript para terminar este proyecto.</p></div></article>
+    <article class="easy-card behind"><div class="easy-icon">🎨</div><div><strong>Tu trabajo</strong><p>Crear sistema de color, spacing, layout, responsive, estados y movimiento desde CSS.</p></div></article>
+    <article class="easy-card remember"><div class="easy-icon">✅</div><div><strong>Resultado</strong><p>Un dashboard moderno que funciona en móvil y escritorio.</p></div></article>
+  </div></div>
+
+  <div class="final-grid">
+    <article class="final-card"><h4>Archivos</h4><p><code>index.html</code> aporta la estructura y <code>styles.css</code> concentra el diseño.</p></article>
+    <article class="final-card"><h4>Regla del proyecto</h4><p>Evita estilos inline. Intenta resolver cada decisión visual en la hoja CSS.</p></article>
+  </div>
+
+  <details class="final-step" open><summary>01 · Crear tokens y estilos base</summary><div class="final-step-body"><div class="codebox"><div class="codehead"><strong>styles.css · base</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>:root {
+  --brand: #1572b6;
+  --brand-2: #0ea5e9;
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #dbe4ef;
+  --radius: 18px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}</code></pre></div></div></details>
+
+  <details class="final-step" open><summary>02 · Construir el layout principal con Grid</summary><div class="final-step-body"><div class="codebox"><div class="codehead"><strong>styles.css · layout</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+.sidebar {
+  padding: 24px 18px;
+  background: #0f172a;
+  color: white;
+}
+
+.main {
+  min-width: 0;
+  padding: 28px;
+}</code></pre></div></div></details>
+
+  <details class="final-step" open><summary>03 · Estadísticas con Grid automático</summary><div class="final-step-body"><div class="codebox"><div class="codehead"><strong>styles.css · stats</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, .06);
+}</code></pre></div></div></details>
+
+  <details class="final-step" open><summary>04 · Menú y acciones con Flexbox</summary><div class="final-step-body"><div class="codebox"><div class="codehead"><strong>styles.css · flex</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}</code></pre></div></div></details>
+
+  <details class="final-step" open><summary>05 · Responsive: pasar a una columna</summary><div class="final-step-body"><div class="codebox"><div class="codehead"><strong>styles.css · responsive</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>@media (max-width: 820px) {
+  .app { grid-template-columns: 1fr; }
+
+  .sidebar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .main { padding: 18px; }
+  .topbar { align-items: flex-start; flex-direction: column; }
+}</code></pre></div></div></details>
+
+  <details class="final-step" open><summary>06 · Estados y movimiento</summary><div class="final-step-body"><div class="codebox"><div class="codehead"><strong>styles.css · estados</strong><button class="copy" data-copy>Copiar CSS</button></div><pre><code>.stat-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(15, 23, 42, .10);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}</code></pre></div></div></details>
+
+  <div class="practice-divider"><span></span><strong>CHECKLIST DE ENTREGA</strong><span></span></div>
+  <div class="checklist">
+    <label><input type="checkbox" data-final-check="1"> Usa variables CSS para los valores repetidos.</label>
+    <label><input type="checkbox" data-final-check="2"> El Box Model no provoca desbordes inesperados.</label>
+    <label><input type="checkbox" data-final-check="3"> Flexbox se usa para alineación lineal y Grid para estructura.</label>
+    <label><input type="checkbox" data-final-check="4"> La interfaz funciona cerca de 360px de ancho y también en escritorio.</label>
+    <label><input type="checkbox" data-final-check="5"> Botones y enlaces tienen estados :hover y :focus-visible.</label>
+    <label><input type="checkbox" data-final-check="6"> Las animaciones respetan prefers-reduced-motion.</label>
+    <label><input type="checkbox" data-final-check="7"> No depende de !important para funcionar.</label>
+    <label><input type="checkbox" data-final-check="8"> El archivo styles.css está ordenado por bloques comprensibles.</label>
+  </div>
+</section>
+</div>
+</main>
+<footer class="footer">CSS Academy · Aprende la lógica visual primero y construye el código paso a paso.</footer>
+
+<div class="lab-modal" id="labModal" role="dialog" aria-modal="true"><div class="lab-dialog"><div class="lab-top"><span style="color:#fb7185">●</span><span style="color:#fbbf24">●</span><span style="color:#34d399">●</span><div class="lab-title" id="labTitle">Laboratorio CSS</div><button class="lab-close" id="labClose">×</button></div><div class="lab-body"><div class="lab-code"><div class="lab-label">STYLES.CSS · EDITABLE</div><textarea id="labCss" spellcheck="false"></textarea></div><div class="lab-preview"><div class="lab-preview-head">VISTA PREVIA · HTML FIJO</div><iframe id="labFrame" title="Vista previa del laboratorio"></iframe></div></div><div class="lab-actions"><button class="lab-action primary" id="labRun">Actualizar</button><button class="lab-action" id="labReset">Restaurar CSS</button><span class="lab-status" id="labStatus">Listo</span></div></div></div>
 <script>
-const topics=[
-{title:'01 · Qué es CSS',cat:'fundamentos',items:[{name:'CSS y su función',tag:'CSS',desc:'CSS (Cascading Style Sheets) controla la presentación visual del HTML: colores, tamaños, espacios, posiciones, layouts y animaciones.',code:'h1 {\n  color: #0a7e72;\n  font-size: 42px;\n}',html:'<h1>Diseño con CSS</h1>',note:'HTML define qué es el contenido; CSS define cómo se presenta.'},{name:'Sintaxis de una regla',tag:'selector { propiedad: valor; }',desc:'Una regla CSS combina un selector y un bloque de declaraciones. Cada declaración tiene una propiedad y un valor.',code:'.tarjeta {\n  background: white;\n  padding: 20px;\n  border-radius: 16px;\n}',html:'<div class="tarjeta" style="background:white;padding:20px;border-radius:16px">Tarjeta</div>',note:'El punto (.) selecciona clases y # selecciona IDs.'}]},
-{title:'02 · Formas de aplicar CSS',cat:'fundamentos',items:[{name:'CSS externo',tag:'<link>',desc:'La opción recomendada para proyectos reales es enlazar una hoja externa desde el head del documento.',code:'<link rel="stylesheet" href="styles.css">',html:'<strong>HTML</strong> enlaza un archivo <code>styles.css</code>.',note:'Facilita mantenimiento, caché y reutilización.'},{name:'CSS interno',tag:'<style>',desc:'Puede incluirse CSS dentro del documento usando la etiqueta style.',code:'<style>\n  p { color: royalblue; }\n</style>',html:'<p style="color:royalblue">Párrafo con estilo.</p>',note:'Útil en demos pequeñas o documentos aislados.'}]},
-{title:'03 · Selectores',cat:'fundamentos',items:[{name:'Clase, ID y elemento',tag:'.clase · #id · etiqueta',desc:'Los selectores determinan qué elementos HTML reciben una regla.',code:'p { color:#334; }\n.alerta { color:#d33; }\n#principal { font-weight:bold; }',html:'<p>Párrafo normal</p><p class="alerta" style="color:#d33">Alerta</p><p id="principal" style="font-weight:bold">Principal</p>',note:'Prefiere clases para estilos reutilizables.'},{name:'Selectores combinados',tag:'descendiente > + ~',desc:'Permiten seleccionar elementos por relación estructural.',code:'nav a { color: teal; }\nul > li { margin: 6px; }\nh2 + p { font-style: italic; }',html:'<nav><a href="#" style="color:teal">Enlace</a></nav><h2>Título</h2><p><i>Texto posterior</i></p>',note:'Úsalos con moderación para evitar selectores demasiado frágiles.'}]},
-{title:'04 · Cascada y especificidad',cat:'fundamentos',items:[{name:'Cascada',tag:'cascade',desc:'Si varias reglas afectan al mismo elemento, CSS resuelve el conflicto según origen, importancia, especificidad y orden.',code:'p { color: blue; }\n.texto { color: green; }\n#intro { color: purple; }',html:'<p id="intro" class="texto" style="color:purple">Gana la regla más específica.</p>',note:'Evita abusar de !important.'},{name:'Herencia',tag:'inherit',desc:'Algunas propiedades como color y font-family se heredan desde elementos padre.',code:'body {\n  color:#123;\n  font-family:system-ui;\n}',html:'<div style="color:#165c73;font-family:system-ui"><p>Este texto hereda estilos.</p></div>',note:'margin, padding y border normalmente no se heredan.'}]},
-{title:'05 · Box Model',cat:'fundamentos',items:[{name:'Contenido, padding, border, margin',tag:'box model',desc:'Todo elemento se representa como una caja compuesta por contenido, relleno, borde y margen.',code:'.caja {\n width:220px;\n padding:20px;\n border:4px solid #28c;\n margin:16px;\n box-sizing:border-box;\n}',html:'<div style="width:220px;padding:20px;border:4px solid #28c;margin:16px;box-sizing:border-box;background:#eef">Box Model</div>',note:'box-sizing:border-box simplifica el cálculo del tamaño final.'}]},
-{title:'06 · Colores, fondos y bordes',cat:'fundamentos',items:[{name:'Colores',tag:'color · background',desc:'CSS admite nombres, HEX, RGB, HSL y transparencias.',code:'.hero {\n color:#fff;\n background:linear-gradient(135deg,#0aa,#246);\n}',html:'<div style="padding:30px;color:white;border-radius:14px;background:linear-gradient(135deg,#0aa,#246)">Gradiente</div>',note:'HSL es muy útil para sistemas de diseño.'},{name:'Bordes y sombras',tag:'border · box-shadow',desc:'Permiten definir contornos, radios y profundidad visual.',code:'.panel {\n border:1px solid #ccd;\n border-radius:18px;\n box-shadow:0 18px 40px #0002;\n}',html:'<div style="padding:25px;border:1px solid #ccd;border-radius:18px;box-shadow:0 18px 40px #0002">Panel elevado</div>',note:'Sombras suaves suelen verse mejor que sombras muy oscuras.'}]},
-{title:'07 · Tipografía',cat:'fundamentos',items:[{name:'Texto y fuentes',tag:'font-*',desc:'Controla familia tipográfica, tamaño, grosor, altura de línea, alineación y espaciado.',code:'h2 {\n font-size:2rem;\n font-weight:800;\n letter-spacing:-.03em;\n line-height:1.1;\n}',html:'<h2 style="font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.1">Tipografía con jerarquía</h2>',note:'Usa rem para escalas tipográficas accesibles.'}]},
-{title:'08 · Display y posicionamiento',cat:'layout',items:[{name:'display',tag:'block · inline · none',desc:'display define cómo participa un elemento en el flujo de layout.',code:'.oculto { display:none; }\n.en-linea { display:inline-block; }',html:'<span style="display:inline-block;padding:8px;background:#def">Inline block</span>',note:'Flex y Grid también son valores de display.'},{name:'position',tag:'relative · absolute · fixed · sticky',desc:'Controla el método de posicionamiento y permite desplazar elementos respecto a distintos contextos.',code:'.padre{position:relative}\n.badge{position:absolute;top:8px;right:8px}',html:'<div style="position:relative;height:100px;background:#eef;border-radius:12px"><span style="position:absolute;top:8px;right:8px;background:#0aa;color:white;padding:6px 9px;border-radius:8px">Nuevo</span></div>',note:'absolute sale del flujo normal.'}]},
-{title:'09 · Flexbox',cat:'layout',items:[{name:'Contenedor flexible',tag:'display:flex',desc:'Flexbox organiza elementos en una dimensión, fila o columna, y facilita alineación y distribución.',code:'.fila {\n display:flex;\n gap:12px;\n justify-content:space-between;\n align-items:center;\n}',html:'<div style="display:flex;gap:12px;justify-content:space-between"><b>A</b><b>B</b><b>C</b></div>',note:'Ideal para barras, menús, controles y filas de tarjetas.'},{name:'flex-wrap y flex',tag:'flex-wrap',desc:'Permite que los elementos salten de línea y que crezcan o se contraigan.',code:'.cards{display:flex;flex-wrap:wrap;gap:12px}\n.card{flex:1 1 180px}',html:'<div style="display:flex;flex-wrap:wrap;gap:10px"><div style="flex:1 1 120px;background:#def;padding:18px">1</div><div style="flex:1 1 120px;background:#def;padding:18px">2</div><div style="flex:1 1 120px;background:#def;padding:18px">3</div></div>',note:'flex:1 1 180px combina grow, shrink y basis.'}]},
-{title:'10 · CSS Grid',cat:'layout',items:[{name:'Cuadrícula',tag:'display:grid',desc:'Grid organiza contenido en filas y columnas de forma bidimensional.',code:'.grid {\n display:grid;\n grid-template-columns:repeat(3,1fr);\n gap:14px;\n}',html:'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px"><div style="background:#dff;padding:22px">1</div><div style="background:#dff;padding:22px">2</div><div style="background:#dff;padding:22px">3</div></div>',note:'repeat(auto-fit,minmax(...)) crea grids responsivos potentes.'}]},
-{title:'11 · Unidades',cat:'responsive',items:[{name:'px, %, em, rem, vw, vh',tag:'unidades',desc:'Las unidades relativas ayudan a crear interfaces adaptables.',code:'.contenedor{width:min(90%,1200px)}\nh1{font-size:clamp(2rem,5vw,4rem)}',html:'<h2 style="font-size:clamp(24px,5vw,52px)">Texto fluido</h2>',note:'clamp() permite definir mínimo, valor fluido y máximo.'}]},
-{title:'12 · Responsive Design',cat:'responsive',items:[{name:'Media queries',tag:'@media',desc:'Cambian estilos según características de la pantalla.',code:'@media (max-width:768px){\n .layout{grid-template-columns:1fr}\n}',html:'<div style="padding:20px;background:#eef">Reduce la ventana para aplicar diseños alternativos.</div>',note:'Diseña mobile-first cuando sea posible.'},{name:'Imágenes adaptables',tag:'max-width:100%',desc:'Evita que las imágenes excedan su contenedor.',code:'img { max-width:100%; height:auto; }',html:'<div style="max-width:420px;background:#dfe;padding:15px">Imagen adaptable dentro del contenedor</div>',note:'object-fit ayuda a controlar recortes.'}]},
-{title:'13 · Pseudo-clases y pseudo-elementos',cat:'efectos',items:[{name:':hover, :focus, :nth-child',tag:':hover',desc:'Las pseudo-clases describen estados o posiciones especiales.',code:'button:hover{transform:translateY(-2px)}\ninput:focus{outline:2px solid cyan}',html:'<button style="padding:10px 15px">Pasa el cursor</button>',note:'No olvides estilos de :focus para accesibilidad.'},{name:'::before y ::after',tag:'::before',desc:'Crean elementos visuales generados sin añadir HTML extra.',code:'.titulo::before{content:"✦ ";color:teal}',html:'<h3 style="color:#0a7e72">✦ Decoración generada</h3>',note:'Son útiles para adornos, íconos simples y capas.'}]},
-{title:'14 · Variables CSS',cat:'fundamentos',items:[{name:'Custom properties',tag:'--variable',desc:'Permiten centralizar valores de diseño y reutilizarlos.',code:':root{--primary:#10b981}\n.btn{background:var(--primary)}',html:'<button style="background:#10b981;color:white;border:0;padding:10px 15px;border-radius:10px">Variable</button>',note:'Son esenciales para temas y design systems.'}]},
-{title:'15 · Transiciones y animaciones',cat:'efectos',items:[{name:'transition',tag:'transition',desc:'Suaviza cambios entre estados.',code:'.card{transition:.25s}\n.card:hover{transform:translateY(-6px)}',html:'<div style="padding:20px;background:#def;border-radius:14px">Transición suave</div>',note:'Anima transform y opacity para mejor rendimiento.'},{name:'@keyframes',tag:'animation',desc:'Define animaciones con múltiples etapas.',code:'@keyframes pulso{50%{transform:scale(1.06)}}\n.icon{animation:pulso 1.2s infinite}',html:'<div style="font-size:46px;text-align:center">◉</div>',note:'Respeta prefers-reduced-motion en proyectos reales.'}]},
-{title:'16 · Buenas prácticas',cat:'fundamentos',items:[{name:'CSS mantenible',tag:'arquitectura',desc:'Usa nombres claros, clases reutilizables, variables, componentes y evita selectores excesivamente específicos.',code:'.card{}\n.card__title{}\n.card--featured{}',html:'<div><b>Componente</b> → elemento → variante</div>',note:'BEM, utility classes y CSS Modules son enfoques válidos según el proyecto.'}]}
-];
-const nav=document.querySelector('#nav'),content=document.querySelector('#content');
-function render(){const q=document.querySelector('#search').value.toLowerCase(),f=document.querySelector('#filter').value;content.innerHTML='';nav.innerHTML='';topics.forEach((t,ti)=>{const matched=t.items.filter(i=>(f==='all'||t.cat===f)&&(`${t.title} ${i.name} ${i.tag} ${i.desc}`).toLowerCase().includes(q));if(!matched.length)return;const b=document.createElement('button');b.textContent=t.title;b.onclick=()=>document.querySelector('#s'+ti)?.scrollIntoView({behavior:'smooth'});nav.appendChild(b);const sec=document.createElement('section');sec.id='s'+ti;sec.innerHTML=`<h2 class="section-title">${t.title}</h2><div class="cards"></div><div class="activity"><b>Actividad:</b> modifica uno de los ejemplos de esta sección y explica qué propiedad CSS produce el cambio visual.</div>`;const cards=sec.querySelector('.cards');matched.forEach(i=>{const c=document.createElement('article');c.className='card';c.innerHTML=`<div class="explain"><div class="tag">${i.tag}</div><h3>${i.name}</h3><p>${i.desc}</p><div class="chips"><span class="chip">CSS</span><span class="chip">HTML</span><span class="chip">Práctica</span></div><div class="note">ⓘ ${i.note}</div></div><div class="code"><div class="code-head"><span>Código</span><button class="copy">Copiar</button></div><pre></pre></div><div class="preview"><div class="preview-head">Resultado</div><div class="frame"></div></div>`;c.querySelector('pre').textContent=i.code+(i.html?`\n\nHTML:\n${i.html}`:'');c.querySelector('.frame').innerHTML=i.html||'';c.querySelector('.copy').onclick=()=>navigator.clipboard.writeText(i.code);cards.appendChild(c)});content.appendChild(sec)});}
-search.oninput=render;filter.onchange=render;render();
-const h=document.querySelector('#htmlEditor'),c=document.querySelector('#cssEditor'),live=document.querySelector('#live');function updateLive(){live.srcdoc=`<!doctype html><html><head><style>${c.value}</style></head><body>${h.value}</body></html>`}h.oninput=c.oninput=updateLive;updateLive();
+const $=(q,c=document)=>c.querySelector(q), $$=(q,c=document)=>[...c.querySelectorAll(q)];
+const storage={get(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+const state={done:storage.get('css-academy-done',{}),mini:storage.get('css-academy-mini',{}),fav:storage.get('css-academy-fav',{}),checks:storage.get('css-academy-final',{})};
+
+function updateScroll(){const h=document.documentElement;const max=h.scrollHeight-h.clientHeight;$('.progress-top').style.width=(max?scrollY/max*100:0)+'%'}
+addEventListener('scroll',updateScroll,{passive:true});updateScroll();
+
+$$('[data-study]').forEach(btn=>{const id=btn.dataset.study; if(state.done[id]){btn.classList.add('done');btn.textContent='✓ Entendida'} btn.addEventListener('click',()=>{state.done[id]=!state.done[id];storage.set('css-academy-done',state.done);btn.classList.toggle('done',state.done[id]);btn.textContent=state.done[id]?'✓ Entendida':'✓ Marcar entendida'})});
+$$('[data-mini-complete]').forEach(btn=>{const id=btn.dataset.miniComplete; const paint=()=>{btn.classList.toggle('is-complete',!!state.mini[id]);btn.textContent=state.mini[id]?'✓ Completado':'○ Pendiente'};paint();btn.addEventListener('click',()=>{state.mini[id]=!state.mini[id];storage.set('css-academy-mini',state.mini);paint()})});
+$$('[data-fav]').forEach(btn=>{const id=btn.dataset.fav;const paint=()=>{btn.classList.toggle('active',!!state.fav[id]);btn.textContent=state.fav[id]?'★':'☆'};paint();btn.addEventListener('click',()=>{state.fav[id]=!state.fav[id];storage.set('css-academy-fav',state.fav);paint()})});
+$$('[data-final-check]').forEach(box=>{const id=box.dataset.finalCheck;box.checked=!!state.checks[id];box.addEventListener('change',()=>{state.checks[id]=box.checked;storage.set('css-academy-final',state.checks)})});
+
+$$('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const code=btn.closest('.codebox').querySelector('code').innerText;try{await navigator.clipboard.writeText(code);const old=btn.textContent;btn.textContent='✓ Copiado';setTimeout(()=>btn.textContent=old,1200)}catch{btn.textContent='Selecciona y copia'}}));
+
+const search=$('#search'), filterBtns=$$('.filter-btn'), sections=$$('.course-section'), empty=$('#empty');let activeGroup='Todos';
+function applyFilter(){const q=(search.value||'').toLowerCase().trim();let visible=0;sections.forEach(s=>{const group=s.dataset.group||'';const text=(s.dataset.title+' '+group+' '+s.innerText).toLowerCase();const okGroup=activeGroup==='Todos'||group===activeGroup;const okQ=!q||text.includes(q);s.hidden=!(okGroup&&okQ);if(!s.hidden)visible++});empty.style.display=visible?'none':'block'}
+search.addEventListener('input',applyFilter);filterBtns.forEach(b=>b.addEventListener('click',()=>{filterBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active');activeGroup=b.dataset.group;applyFilter()}));
+
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){$$('.nav-link').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-25% 0px -65% 0px'});sections.forEach(s=>observer.observe(s));
+
+const theme=$('#theme');if(storage.get('css-academy-theme','light')==='dark')document.body.classList.add('theme-dark');function themePaint(){theme.textContent=document.body.classList.contains('theme-dark')?'☀':'◐'}themePaint();theme.addEventListener('click',()=>{document.body.classList.toggle('theme-dark');storage.set('css-academy-theme',document.body.classList.contains('theme-dark')?'dark':'light');themePaint()});
+
+const modal=$('#labModal'), labCss=$('#labCss'), labFrame=$('#labFrame'), labTitle=$('#labTitle'), labStatus=$('#labStatus');let originalCss='',currentHtml='';
+function renderLab(){const doc=`<!doctype html><html><head><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;padding:30px;font-family:Inter,system-ui,sans-serif;background:#f8fafc;color:#0f172a}button,input{font:inherit}${labCss.value}</style></head><body>${currentHtml}</body></html>`;labFrame.srcdoc=doc;labStatus.textContent='Vista actualizada'}
+$$('[data-lab-title]').forEach(btn=>btn.addEventListener('click',()=>{const topic=btn.closest('.topic');originalCss=$('.lab-source-css',topic).value;currentHtml=$('.lab-source-html',topic).value;labCss.value=originalCss;labTitle.textContent=btn.dataset.labTitle;modal.classList.add('open');document.body.style.overflow='hidden';renderLab();labCss.focus()}));
+$('#labClose').addEventListener('click',closeLab);modal.addEventListener('click',e=>{if(e.target===modal)closeLab()});addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeLab()});function closeLab(){modal.classList.remove('open');document.body.style.overflow=''}
+let labTimer;labCss.addEventListener('input',()=>{clearTimeout(labTimer);labStatus.textContent='Escribiendo…';labTimer=setTimeout(renderLab,160)});$('#labReset').addEventListener('click',()=>{labCss.value=originalCss;renderLab()});$('#labRun').addEventListener('click',renderLab);
 </script>
 </body></html>
